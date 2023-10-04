@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="First commit - Week 4 - Part 06 - First Endpoint in place">
+    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="First commit - Week 4 - Part 07 - Second Endpoint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/HealthTrackerController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/HealthTrackerController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/UserDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/UserDAO.kt" afterDir="false" />
     </list>
@@ -26,6 +26,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Warren-Byron"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="d32925b2-3f8d-406d-ba7b-19f3d40ea687" />
+        <option name="url" value="https://github.com/Agilis-Ingenium/HealthTracker-BackEnd.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -94,7 +108,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696340824932</updated>
-      <workItem from="1696340826381" duration="10855000" />
+      <workItem from="1696340826381" duration="11536000" />
     </task>
     <task id="LOCAL-00001" summary="First commit - Week 3-06 - First Endpoint in place">
       <option name="closed" value="true" />
@@ -120,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696420387959</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="First commit - Week 4 - Part 07 - Second Endpoint">
+      <option name="closed" value="true" />
+      <created>1696428680879</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696428680879</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,7 +151,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit - Week 3-06 - First Endpoint in place" />
     <MESSAGE value="First commit - Week 4 - Part 06 - First Endpoint in place" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit - Week 4 - Part 06 - First Endpoint in place" />
+    <MESSAGE value="First commit - Week 4 - Part 07 - Second Endpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit - Week 4 - Part 07 - Second Endpoint" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

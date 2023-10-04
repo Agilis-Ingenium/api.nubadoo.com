@@ -19,4 +19,8 @@ class UserDAO {
         return users.find {it.id == id}
     }
 
+    fun save(user: User){
+        users.add(user)
+    }
+
 }
