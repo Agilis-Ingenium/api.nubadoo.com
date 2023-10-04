@@ -15,4 +15,8 @@ class UserDAO {
         return users
     }
 
+    fun findById(id: Int): User?{
+        return users.find {it.id == id}
+    }
+
 }

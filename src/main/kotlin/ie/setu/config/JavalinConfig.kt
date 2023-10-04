@@ -21,7 +21,11 @@ class JavalinConfig {
         app.routes {
             path("/api/users") {
                 get(HealthTrackerController::getAllUsers)
+                path("{user-id}"){
+                    get(HealthTrackerController::getUserByUserId)
+                }
             }
         }
     }
 }
+
