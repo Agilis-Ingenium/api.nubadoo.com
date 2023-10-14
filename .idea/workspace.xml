@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Week 4 - Part 08 - Third Endpoint - POST /api/users">
+    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Week 4 - Part 09 Exe 1, 2, 3 - Users endpoint - findByEmail, delete, update">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/DbConfig.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/db/Users.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/utils/DBUtiliies.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/HealthTrackerController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/HealthTrackerController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/App.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/UserDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/UserDAO.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +23,7 @@
       <list>
         <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -109,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696340824932</updated>
-      <workItem from="1696340826381" duration="13980000" />
+      <workItem from="1696340826381" duration="16958000" />
     </task>
     <task id="LOCAL-00001" summary="First commit - Week 3-06 - First Endpoint in place">
       <option name="closed" value="true" />
@@ -159,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696429731827</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Week 4 - Part 09 Exe 1, 2, 3 - Users endpoint - findByEmail, delete, update">
+      <option name="closed" value="true" />
+      <created>1696673470913</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696673470913</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +182,8 @@
     <MESSAGE value="First commit - Week 4 - Part 07 - Second Endpoint" />
     <MESSAGE value="First commit - Week 4 - Part 08 - Third Endpoint - POST /api/users" />
     <MESSAGE value="Week 4 - Part 08 - Third Endpoint - POST /api/users" />
-    <option name="LAST_COMMIT_MESSAGE" value="Week 4 - Part 08 - Third Endpoint - POST /api/users" />
+    <MESSAGE value="Week 4 - Part 09 Exe 1, 2, 3 - Users endpoint - findByEmail, delete, update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Week 4 - Part 09 Exe 1, 2, 3 - Users endpoint - findByEmail, delete, update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
