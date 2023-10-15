@@ -1,5 +1,6 @@
 name: CURL CLI ACTION
-on: push
+on:
+  workflow_dispatch:
 jobs:
   curl:
     runs-on: ubuntu-latest
