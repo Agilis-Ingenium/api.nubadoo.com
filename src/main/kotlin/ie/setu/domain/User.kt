@@ -1,6 +1,13 @@
 package ie.setu.domain
 
 data class User (
-    var id: Int,
-    var name:String,
-    var email:String)
+    var userId: Int,
+    var username: String,
+    var email: String,
+    var password: String,
+    var firstName: String,
+    var lastName: String,
+    var dateOfBirth: String,
+    var gender: String,
+    var registrationDate: String
+)
