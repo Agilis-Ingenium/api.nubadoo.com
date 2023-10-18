@@ -1,7 +1,7 @@
 package ie.setu.domain
 
 data class FoodItem (
-    var food_id: Int,
+    var foodId: Int,
     var name: String,
     var calories: Int,
     var carbohydrates: Double,

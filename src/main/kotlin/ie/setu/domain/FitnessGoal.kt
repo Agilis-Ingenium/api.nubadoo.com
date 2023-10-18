@@ -1,11 +1,11 @@
 package ie.setu.domain
 
 data class FitnessGoal (
-    var goal_id: Int,
-    var user_id: Int,
-    var goal_type: String,
-    var target_value: Double,
-    var target_date: String,
+    var goalId: Int,
+    var userId: Int,
+    var goalType: String,
+    var targetValue: Double,
+    var targetDate: String,
 )
 
 /*

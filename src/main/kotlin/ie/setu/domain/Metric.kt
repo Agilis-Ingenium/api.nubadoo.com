@@ -1,18 +1,18 @@
 package ie.setu.domain
 
 data class Metric (
-    var metric_id: Int,
-    var user_id: Int,
+    var metricId: Int,
+    var userId: Int,
     var weight: Double,
     var height: Double,
     var bmi: Double,
-    var systolic_blood_pressure: Int,
-    var diastolic_blood_pressure: Int,
-    var heart_rate: Int,
-    var blood_sugar: Double,
-    var sleep_duration: Int,
-    var sleep_quality: String,
-    var created_at: String
+    var systolicBloodPressure: Int,
+    var diastolicBloodPressure: Int,
+    var heartRate: Int,
+    var bloodSugar: Double,
+    var sleepDuration: Int,
+    var sleepQuality: String,
+    var createdAt: String
 )
 
 /*

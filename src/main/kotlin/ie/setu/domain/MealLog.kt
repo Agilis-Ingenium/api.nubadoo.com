@@ -1,10 +1,10 @@
 package ie.setu.domain
 
 data class MealLog (
-    var log_id: Int,
-    var user_id: Int,
-    var meal_time: String,
-    var total_calories: Int
+    var logId: Int,
+    var userId: Int,
+    var mealTime: String,
+    var totalCalories: Int
 )
 
 

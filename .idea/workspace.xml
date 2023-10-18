@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Week 4 - Part 09 Exe 1, 2, 3 - Users endpoint - findByEmail, delete, update">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/DbConfig.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/db/Users.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/utils/DBUtiliies.kt" afterDir="false" />
+    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="MealLogFoodItem data class - matches table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/App.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/UserDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/UserDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/ActivityData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/ActivityData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/FitnessGoal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/FitnessGoal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/FoodItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/FoodItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/MealLog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/MealLog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/MealLogFoodItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/MealLogFoodItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/Metric.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/Metric.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/WorkOutPlan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/WorkOutPlan.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +30,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="4-week-5-12-findbyid" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -41,9 +48,12 @@
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
         <option name="accountId" value="d32925b2-3f8d-406d-ba7b-19f3d40ea687" />
-        <option name="url" value="https://github.com/Agilis-Ingenium/HealthTracker-BackEnd.git" />
+        <option name="url" value="https://github.com/Agilis-Ingenium/api.nubadoo.com.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -62,7 +72,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "6-match-the-data-class-definitions-to-the-db",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,6 +85,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="ie.setu.domain" />
+    </key>
+  </component>
   <component name="RunManager" selected="Kotlin.AppKt">
     <configuration name="ie.setu in healthtrackerrest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="healthtrackerrest" />
@@ -112,7 +127,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696340824932</updated>
-      <workItem from="1696340826381" duration="16958000" />
+      <workItem from="1696340826381" duration="26225000" />
     </task>
     <task id="LOCAL-00001" summary="First commit - Week 3-06 - First Endpoint in place">
       <option name="closed" value="true" />
@@ -170,11 +185,134 @@
       <option name="project" value="LOCAL" />
       <updated>1696673470913</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="W5 - DB Integration + Logging">
+      <option name="closed" value="true" />
+      <created>1697292159707</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697292159707</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add Maven assembly plugin">
+      <option name="closed" value="true" />
+      <created>1697295867596</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1697295867596</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fix issue with ports">
+      <option name="closed" value="true" />
+      <created>1697298938008</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1697298938008</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add README file">
+      <option name="closed" value="true" />
+      <created>1697303690615</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697303690615</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add findByID functionality">
+      <option name="closed" value="true" />
+      <created>1697374190302</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1697374190302</updated>
+    </task>
+    <task id="LOCAL-00013" summary="ActivityData data class - matches table">
+      <option name="closed" value="true" />
+      <created>1697647354639</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1697647354639</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fitness data class - matches table">
+      <option name="closed" value="true" />
+      <created>1697648946321</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1697648946321</updated>
+    </task>
+    <task id="LOCAL-00015" summary="FoodItem data class - matches table">
+      <option name="closed" value="true" />
+      <created>1697649221062</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1697649221062</updated>
+    </task>
+    <task id="LOCAL-00016" summary="User data class - matches table">
+      <option name="closed" value="true" />
+      <created>1697649475715</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1697649475715</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Pong data class - no match to db">
+      <option name="closed" value="true" />
+      <created>1697649558391</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1697649558391</updated>
+    </task>
+    <task id="LOCAL-00018" summary="WorkOutPlan data class - matches table">
+      <option name="closed" value="true" />
+      <created>1697650620292</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1697650620292</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Metric data class - matches table">
+      <option name="closed" value="true" />
+      <created>1697651334349</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1697651334349</updated>
+    </task>
+    <task id="LOCAL-00020" summary="MealLog data class - matches table">
+      <option name="closed" value="true" />
+      <created>1697651486518</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1697651486518</updated>
+    </task>
+    <task id="LOCAL-00021" summary="MealLogFoodItem data class - matches table">
+      <option name="closed" value="true" />
+      <created>1697652016359</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1697652016359</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit - Week 3-06 - First Endpoint in place" />
@@ -183,7 +321,21 @@
     <MESSAGE value="First commit - Week 4 - Part 08 - Third Endpoint - POST /api/users" />
     <MESSAGE value="Week 4 - Part 08 - Third Endpoint - POST /api/users" />
     <MESSAGE value="Week 4 - Part 09 Exe 1, 2, 3 - Users endpoint - findByEmail, delete, update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Week 4 - Part 09 Exe 1, 2, 3 - Users endpoint - findByEmail, delete, update" />
+    <MESSAGE value="W5 - DB Integration + Logging" />
+    <MESSAGE value="Add Maven assembly plugin" />
+    <MESSAGE value="Fix issue with ports" />
+    <MESSAGE value="Add README file" />
+    <MESSAGE value="Add findByID functionality" />
+    <MESSAGE value="ActivityData data class - matches table" />
+    <MESSAGE value="Fitness data class - matches table" />
+    <MESSAGE value="FoodItem data class - matches table" />
+    <MESSAGE value="User data class - matches table" />
+    <MESSAGE value="Pong data class - no match to db" />
+    <MESSAGE value="WorkOutPlan data class - matches table" />
+    <MESSAGE value="Metric data class - matches table" />
+    <MESSAGE value="MealLog data class - matches table" />
+    <MESSAGE value="MealLogFoodItem data class - matches table" />
+    <option name="LAST_COMMIT_MESSAGE" value="MealLogFoodItem data class - matches table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,13 +1,13 @@
 package ie.setu.domain
 
 data class ActivityData (
-    var activity_id: Int,
-    var user_id: Int,
-    var activity_type:String,
-    var duration_minutes:Int,
-    var distance_km:Double,
-    var workout_intensity:String,
-    var activity_date:String
+    var activityId: Int,
+    var userId: Int,
+    var activityType:String,
+    var durationMinutes:Int,
+    var distanceKm:Double,
+    var workoutIntensity:String,
+    var activityDate:String
 )
 
 /*

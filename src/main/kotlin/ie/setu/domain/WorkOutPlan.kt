@@ -1,11 +1,11 @@
 package ie.setu.domain
 
 data class WorkOutPlan (
-    var plan_id: Int,
-    var user_id: Int,
-    var plan_name: String,
+    var planId: Int,
+    var userId: Int,
+    var planName: String,
     var schedule: String,
-    var plan_date: String
+    var planDate: String
 )
 
 /*

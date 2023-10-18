@@ -1,8 +1,8 @@
 package ie.setu.domain
 
 data class MealLogFoodItem (
-    var meal_log_id: Int,
-    var food_id: Int,
+    var mealLogId: Int,
+    var foodId: Int,
     var quantity: Double,
     var calories: Int
 )
