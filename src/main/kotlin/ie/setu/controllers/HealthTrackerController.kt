@@ -1,10 +1,13 @@
 package ie.setu.controllers
 
-import ie.setu.domain.repository.UserDAO
 import io.javalin.http.Context
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+
+import ie.setu.domain.repository.UserDAO
 import ie.setu.domain.User
+import ie.setu.domain.repository.ActivityDAO
+import ie.setu.domain.Activity
 
 object HealthTrackerController {
 
@@ -46,6 +49,12 @@ object HealthTrackerController {
             id = ctx.pathParam("user-id").toInt(),
             user = userUpdates
         )
+    }
+
+    private val activityDao = ActivityDAO()
+
+    fun getAllActivities(ctx: Context) {
+        ctx.json(activityDao.getAll())
     }
 
 }
