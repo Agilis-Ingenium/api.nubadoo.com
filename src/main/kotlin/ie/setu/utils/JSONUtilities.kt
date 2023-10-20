@@ -30,3 +30,12 @@ fun jsonObjectMapper(): ObjectMapper
     .registerModule(JodaModule())
     .registerModule(KotlinModule.Builder().build())
     .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+
+    // Prettify json output globally
+    // https://stackoverflow.com/questions/17617370/pretty-printing-json-from-jackson-2-2s-objectmapper
+
+    .enable(SerializationFeature.INDENT_OUTPUT)
+
+
+
+
