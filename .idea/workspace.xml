@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Added db for MealLogs, MealLogFoodItems" />
+    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Add GET endpoints for each entity">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/HealthTrackerController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/HealthTrackerController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/Activity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/Activity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/FitnessGoal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/FitnessGoal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/MealLog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/MealLog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/Metric.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/Metric.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/WorkOutPlan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/WorkoutPlan.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/db/MealLogs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/db/MealLogs.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/db/WorkoutPlans.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/db/WorkoutPlans.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/WorkoutPlan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/WorkoutPlanDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/utils/DBUtiliies.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/utils/DBUtiliies.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +76,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "10-create-db-objects",
+    "git-widget-placeholder": "12-add-endpoints-and-paths-to-javalinconfig",
     "last_opened_file_path": "/Users/wazby/Development/agile-workspace/api.nubadoo.com",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -80,8 +92,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
-      <recent name="ie.setu.domain.db" />
       <recent name="ie.setu.domain.repository" />
+      <recent name="ie.setu.domain.db" />
       <recent name="ie.setu.domain" />
     </key>
   </component>
@@ -123,7 +135,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696340824932</updated>
       <workItem from="1696340826381" duration="26225000" />
-      <workItem from="1697738407377" duration="17853000" />
+      <workItem from="1697738407377" duration="24304000" />
     </task>
     <task id="LOCAL-00001" summary="First commit - Week 3-06 - First Endpoint in place">
       <option name="closed" value="true" />
@@ -333,7 +345,23 @@
       <option name="project" value="LOCAL" />
       <updated>1697803273246</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Added DAOs">
+      <option name="closed" value="true" />
+      <created>1697804673972</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1697804673973</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Add GET endpoints for each entity">
+      <option name="closed" value="true" />
+      <created>1697805170710</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1697805170710</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +379,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First commit - Week 3-06 - First Endpoint in place" />
     <MESSAGE value="First commit - Week 4 - Part 06 - First Endpoint in place" />
     <MESSAGE value="First commit - Week 4 - Part 07 - Second Endpoint" />
     <MESSAGE value="First commit - Week 4 - Part 08 - Third Endpoint - POST /api/users" />
@@ -375,7 +402,9 @@
     <MESSAGE value="Added Activities [GET]" />
     <MESSAGE value="Added db for FitnessGoals, Metrics, WorkoutPlans" />
     <MESSAGE value="Added db for MealLogs, MealLogFoodItems" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added db for MealLogs, MealLogFoodItems" />
+    <MESSAGE value="Added DAOs" />
+    <MESSAGE value="Add GET endpoints for each entity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add GET endpoints for each entity" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

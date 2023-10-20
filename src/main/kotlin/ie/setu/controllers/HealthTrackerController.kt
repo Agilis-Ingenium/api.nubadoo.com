@@ -10,6 +10,16 @@ import ie.setu.domain.repository.ActivityDAO
 import ie.setu.domain.Activity
 import ie.setu.domain.repository.FoodItemDAO
 import ie.setu.domain.FoodItem
+import ie.setu.domain.WorkoutPlan
+import ie.setu.domain.repository.WorkoutPlanDAO
+import ie.setu.domain.Metric
+import ie.setu.domain.repository.MetricDAO
+import ie.setu.domain.FitnessGoal
+import ie.setu.domain.repository.FitnessGoalDAO
+import ie.setu.domain.MealLog
+import ie.setu.domain.repository.MealLogDAO
+import ie.setu.domain.MealLogFoodItem
+import ie.setu.domain.repository.MealLogFoodItemDAO
 
 object HealthTrackerController {
 
@@ -65,4 +75,33 @@ object HealthTrackerController {
         ctx.json(foodItemDao.getAll())
     }
 
+    private val workoutPlanDao = WorkoutPlanDAO()
+
+    fun getAllWorkoutPlans(ctx: Context) {
+        ctx.json(workoutPlanDao.getAll())
+    }
+
+    private val metricsDao = MetricDAO()
+
+    fun getAllMetrics(ctx: Context) {
+        ctx.json(metricsDao.getAll())
+    }
+
+    private val fitnessGoalsDao = FitnessGoalDAO()
+
+    fun getAllFitnessGoals(ctx: Context) {
+        ctx.json(fitnessGoalsDao.getAll())
+    }
+
+    private val mealLogsDao = MealLogDAO()
+
+    fun getAllMealLogs(ctx: Context) {
+        ctx.json(mealLogsDao.getAll())
+    }
+
+    private val mealLogFoodItemsDao = MealLogFoodItemDAO()
+
+    fun getAllMealLogFoodItems(ctx: Context) {
+        ctx.json(mealLogFoodItemsDao.getAll())
+    }
 }
