@@ -54,12 +54,26 @@ class JavalinConfig {
             }
             path("/api/activities") {
                 get(HealthTrackerController::getAllActivities)
-
                 }
             path("/api/fooditems") {
                 get(HealthTrackerController::getAllFoodItems)
-
             }
+            path("/api/fitnessgoals") {
+                get(HealthTrackerController::getAllFitnessGoals)
+            }
+            path("/api/meallogfooditems") {
+                get(HealthTrackerController::getAllMealLogFoodItems)
+            }
+            path("/api/meallogs") {
+                get(HealthTrackerController::getAllMealLogs)
+            }
+            path("/api/metrics") {
+                get(HealthTrackerController::getAllMetrics)
+            }
+            path("/api/workoutplans") {
+                get(HealthTrackerController::getAllWorkoutPlans)
+            }
+
             }
         }
     }
