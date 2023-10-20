@@ -7,6 +7,6 @@ data class FoodItem (
     var carbohydrates: Double,
     var proteins: Double,
     var fats: Double,
-    var vitamins: Double,
-    var minerals: String
+    var vitamins: Double?,
+    var minerals: String?
 )

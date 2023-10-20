@@ -32,12 +32,6 @@
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- Adding Javalin Dependency -->
         <dependency>
             <groupId>io.javalin</groupId>
@@ -50,7 +44,7 @@
             <artifactId>slf4j-simple</artifactId>
             <version>2.0.7</version>
         </dependency>
-        <!-- General data-binding functionality for Jackson: works on core streaming API -->
+        <!-- Json object mapper required for Javalin -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -80,6 +74,85 @@
             <artifactId>kotlin-logging</artifactId>
             <version>1.12.5</version>
         </dependency>
+        <!-- json dependency for serialising joda date time -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+        <!-- standalone jar with shaded dependencies (renames dependencies to help avoid
+             clashing with other versions of dependencies) -->
+        <dependency>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>3.14.1</version>
+            <classifier>standalone</classifier>
+        </dependency>
+        <!-- Jackson depenency for serialising JodaTime -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+
+        <!-- adding Vue -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>vue</artifactId>
+            <version>3.2.47</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>axios</artifactId>
+            <version>1.5.0</version>
+        </dependency>
+
+        <!-- adding selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-http-jdk-client</artifactId>
+            <version>4.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.24.2</version>
+        </dependency>
+        <!-- for the wait option for Chrome driver -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.12.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-devtools</artifactId>
+            <version>4.0.0-rc-1</version>
+        </dependency>
+        <!-- for testing Javalin with Selenium -->
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin-testtools</artifactId>
+            <version>5.6.2</version>
+        </dependency>
+        <!-- for mocking out the database -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.5.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
