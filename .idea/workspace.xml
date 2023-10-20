@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Added db for FitnessGoals, Metrics, WorkoutPlans">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/db/MealLogs.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Added db for MealLogs, MealLogFoodItems" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +123,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696340824932</updated>
       <workItem from="1696340826381" duration="26225000" />
-      <workItem from="1697738407377" duration="17406000" />
+      <workItem from="1697738407377" duration="17853000" />
     </task>
     <task id="LOCAL-00001" summary="First commit - Week 3-06 - First Endpoint in place">
       <option name="closed" value="true" />
@@ -328,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697801372463</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Added db for MealLogs, MealLogFoodItems">
+      <option name="closed" value="true" />
+      <created>1697803273246</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1697803273246</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +374,8 @@
     <MESSAGE value="Added FoodItems [GET]" />
     <MESSAGE value="Added Activities [GET]" />
     <MESSAGE value="Added db for FitnessGoals, Metrics, WorkoutPlans" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added db for FitnessGoals, Metrics, WorkoutPlans" />
+    <MESSAGE value="Added db for MealLogs, MealLogFoodItems" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added db for MealLogs, MealLogFoodItems" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
