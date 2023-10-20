@@ -5,8 +5,8 @@ import ie.setu.domain.db.WorkoutPlans
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import ie.setu.utils.mapToWorkoutPlan
-import org.jetbrains.exposed.sql.select
-class WorkoutPlan {
+
+class WorkoutPlanDAO {
 
     fun getAll(): ArrayList<WorkoutPlan> {
         val activityList: ArrayList<WorkoutPlan> = arrayListOf()

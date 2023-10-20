@@ -7,6 +7,6 @@ object WorkoutPlans : Table("workout_plans") {
     val planId = integer("activity_id").autoIncrement().primaryKey()
     val userId = integer("user_id").references(Users.userId, onDelete = ReferenceOption.CASCADE)
     val planName = varchar("plan_name",255)
-    val schedule = integer("schedule").nullable()
+    val schedule = varchar("schedule", 10).nullable()
     val planDate = datetime("plan_date").nullable()
 }

@@ -1,5 +1,7 @@
 package ie.setu.domain
 
+import org.joda.time.DateTime
+
 data class Metric (
     var metricId: Int,
     var userId: Int,
@@ -12,5 +14,5 @@ data class Metric (
     var bloodSugar: Double,
     var sleepDuration: Int,
     var sleepQuality: String,
-    var createdAt: String
+    var createdAt: DateTime
 )
