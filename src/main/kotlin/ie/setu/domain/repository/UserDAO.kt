@@ -5,7 +5,8 @@ import ie.setu.domain.db.Users
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import ie.setu.utils.mapToUser
-import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.*
+
 class UserDAO {
 
     fun getAll(): ArrayList<User> {
@@ -27,15 +28,38 @@ class UserDAO {
     }
 
     fun save(user: User){
+        transaction {
+            Users.insert {
+                it[username] = user.username
+                it[email] = user.email
+            }
+        }
     }
 
     fun findByEmail(email: String) :User?{
-        return null
+        return transaction {
+            Users.select() {
+                Users.email eq email}
+                .map{mapToUser(it)}
+                .firstOrNull()
+        }
     }
 
-    fun delete(id: Int) {
+    fun delete(userId: Int):Int{
+        return transaction{
+            Users.deleteWhere{
+                Users.userId eq userId
+            }
+        }
     }
 
-    fun update(id: Int, user: User){
+    fun update(userId: Int, user: User){
+        transaction {
+            Users.update ({
+                Users.userId eq userId}) {
+                it[username] = user.username
+                it[email] = user.email
+            }
+        }
     }
 }
