@@ -32,6 +32,12 @@ class UserDAO {
             Users.insert {
                 it[username] = user.username
                 it[email] = user.email
+                it[password] = user.password
+                it[firstName] = user.firstName
+                it[lastName] = user.lastName
+                it[dateOfBirth] = user.dateOfBirth
+                it[gender] = user.gender
+                it[registrationDate] = user.registrationDate
             }
         }
     }
