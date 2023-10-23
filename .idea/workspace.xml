@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Add to idea gitignore">
+    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Week 6 - 03: First JUnit Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/HealthTrackerController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/HealthTrackerController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/UserDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/UserDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/UserDAOTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/UserDAOTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -69,7 +67,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "26-get-user-api-endpoint-functionally-up-to-date",
+    "git-widget-placeholder": "28-lab-week-6-unit-testing",
     "last_opened_file_path": "/Users/wazby/Development/agile-workspace/api.nubadoo.com",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -90,7 +88,38 @@
       <recent name="ie.setu.domain" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.AppKt">
+  <component name="RunManager" selected="JUnit.UserDAOTest">
+    <configuration name="UserDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="healthtrackerrest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ie.setu.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ie.setu.repository" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.UserDAOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDAOTest.multiple users added to table can be retrieved successfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="healthtrackerrest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ie.setu.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ie.setu.repository" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.UserDAOTest" />
+      <option name="METHOD_NAME" value="multiple users added to table can be retrieved successfully" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ie.setu in healthtrackerrest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="healthtrackerrest" />
       <extension name="coverage">
@@ -114,6 +143,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserDAOTest" />
+        <item itemvalue="JUnit.UserDAOTest.multiple users added to table can be retrieved successfully" />
         <item itemvalue="Kotlin.AppKt" />
         <item itemvalue="JUnit.ie.setu in healthtrackerrest" />
       </list>
@@ -370,7 +401,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697984868387</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Week 6 - 03: First JUnit Test">
+      <option name="closed" value="true" />
+      <created>1698072633780</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1698072633780</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,7 +427,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First commit - Week 4 - Part 08 - Third Endpoint - POST /api/users" />
     <MESSAGE value="Week 4 - Part 08 - Third Endpoint - POST /api/users" />
     <MESSAGE value="Week 4 - Part 09 Exe 1, 2, 3 - Users endpoint - findByEmail, delete, update" />
     <MESSAGE value="W5 - DB Integration + Logging" />
@@ -413,7 +451,8 @@
     <MESSAGE value="Add GET endpoints for each entity" />
     <MESSAGE value="Prettify json output globally" />
     <MESSAGE value="Add to idea gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add to idea gitignore" />
+    <MESSAGE value="Week 6 - 03: First JUnit Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Week 6 - 03: First JUnit Test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
