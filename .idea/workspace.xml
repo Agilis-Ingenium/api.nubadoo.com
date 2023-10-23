@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Week 6 - 03: First JUnit Test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="7d7dc3c0-21df-4877-ad7d-e78a81fb7536" name="Changes" comment="Week 6 - 04: More unit tests implemented">
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/UserDAOTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/UserDAOTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -409,7 +408,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698072633780</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Week 6 - 04: More unit tests implemented">
+      <option name="closed" value="true" />
+      <created>1698078230953</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1698078230953</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +434,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Week 4 - Part 08 - Third Endpoint - POST /api/users" />
     <MESSAGE value="Week 4 - Part 09 Exe 1, 2, 3 - Users endpoint - findByEmail, delete, update" />
     <MESSAGE value="W5 - DB Integration + Logging" />
     <MESSAGE value="Add Maven assembly plugin" />
@@ -452,7 +458,8 @@
     <MESSAGE value="Prettify json output globally" />
     <MESSAGE value="Add to idea gitignore" />
     <MESSAGE value="Week 6 - 03: First JUnit Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Week 6 - 03: First JUnit Test" />
+    <MESSAGE value="Week 6 - 04: More unit tests implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Week 6 - 04: More unit tests implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
