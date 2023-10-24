@@ -1,5 +1,6 @@
 package ie.setu.repository
 
+import ie.setu.domain.User
 import ie.setu.domain.db.Users
 import ie.setu.domain.repository.UserDAO
 import ie.setu.helpers.users
@@ -10,6 +11,9 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import ie.setu.helpers.nonExistingEmail
+import org.joda.time.DateTime
+import java.time.LocalDate
 
 //retrieving some test data from Fixtures
 val user1 = users.get(0)
@@ -117,6 +121,75 @@ class UserDAOTest {
                 userDAO.delete(user3.userId)
                 assertEquals(2, userDAO.getAll().size)
             }
+        }
+    }
+
+    @Nested
+    inner class UpdateUsers {
+
+        @Test
+        fun `updating existing user in table results in successful update`() {
+            transaction {
+
+                //Arrange - create and populate table with three users
+                val userDAO = populateUserTable()
+
+                //Act & Assert
+                val user3Updated = User(3, "new username", "new@email.ie", password = "123", dateOfBirth = DateTime.parse("2018-12-12"), firstName = "new", lastName = "user", gender = "male", registrationDate = DateTime.parse("2018-12-12"))
+                userDAO.update(user3.userId, user3Updated)
+                assertEquals(user3Updated, userDAO.findById(3))
+            }
+        }
+
+        @Test
+        fun `updating non-existant user in table results in no updates`() {
+            transaction {
+
+                //Arrange - create and populate table with three users
+                val userDAO = populateUserTable()
+
+                //Act & Assert
+                val user4Updated = User(8, "new username", "new@email.ie", password = "123", dateOfBirth = DateTime.parse("2018-12-12"), firstName = "new", lastName = "user", gender = "male", registrationDate = DateTime.parse("2018-12-12"))
+                userDAO.update(4, user4Updated)
+                assertEquals(null, userDAO.findById(4))
+                assertEquals(3, userDAO.getAll().size)
+            }
+        }
+    }
+    @Test
+    fun `get all users over empty table returns none`() {
+        transaction {
+
+            //Arrange - create and setup userDAO object
+            SchemaUtils.create(Users)
+            val userDAO = UserDAO()
+
+            //Act & Assert
+            assertEquals(0, userDAO.getAll().size)
+        }
+    }
+
+    @Test
+    fun `get user by email that doesn't exist, results in no user returned`() {
+        transaction {
+
+            //Arrange - create and populate table with three users
+            val userDAO = populateUserTable()
+
+            //Act & Assert
+            assertEquals(null, userDAO.findByEmail(nonExistingEmail))
+        }
+    }
+
+    @Test
+    fun `get user by email that exists, results in correct user returned`() {
+        transaction {
+
+            //Arrange - create and populate table with three users
+            val userDAO = populateUserTable()
+
+            //Act & Assert
+            assertEquals(user2, userDAO.findByEmail(user2.email))
         }
     }
 
