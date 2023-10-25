@@ -1,6 +1,7 @@
 package ie.setu.domain
 
 import org.joda.time.DateTime
+import ie.setu.enums.Gender
 
 data class User(
     var userId: Int,
@@ -10,6 +11,6 @@ data class User(
     var firstName: String,
     var lastName: String,
     //var dateOfBirth: DateTime,
-    //var gender: String,
+    var gender: Gender,
     //var registrationDate: DateTime?
 )

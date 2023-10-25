@@ -61,6 +61,9 @@ class JavalinConfig {
                 }
                 path("/food-items") {
                     get(FoodItemController::getAllFoodItems)
+                    path("{name}") {
+                        get(FoodItemController::getFoodByFoodItemName)
+                    }
                 }
                 path("/fitness-goals") {
                     get(FitnessGoalController::getAllFitnessGoals)

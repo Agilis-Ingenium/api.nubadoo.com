@@ -1,5 +1,9 @@
 package ie.setu.utils
 import org.jetbrains.exposed.sql.ResultRow
+import java.sql.PreparedStatement
+import org.postgresql.util.PGobject
+import java.sql.ResultSet
+import ie.setu.enums.Gender
 
 import ie.setu.domain.User
 import ie.setu.domain.db.Users
@@ -26,7 +30,8 @@ fun mapToUser(it: ResultRow) = User(
     firstName = it[Users.firstName],
     lastName = it[Users.lastName],
     //dateOfBirth = it[Users.dateOfBirth],
-    //gender = it[Users.gender],
+    gender = retrieveGenderEnum(it[Users.gender]),
+    //gender = it[Users.gender]
     //registrationDate = it[Users.registrationDate]
 )
 
@@ -95,3 +100,24 @@ fun mapToWorkoutPlan(it: ResultRow) = WorkoutPlan(
     schedule = it[WorkoutPlans.schedule],
     planDate = it[WorkoutPlans.planDate]
 )
+
+fun retrieveGenderEnum(it: String): Gender {
+
+    return when (it) {
+        "male" -> Gender.MALE
+        "female" -> Gender.FEMALE
+        else -> throw IllegalArgumentException("Unknown gender value: $it")
+    }
+}
+
+fun setGenderEnum(preparedStatement: PreparedStatement, parameterIndex: Int, gender: Gender) {
+    val genderString = when (gender) {
+        Gender.MALE -> "male"
+        Gender.FEMALE -> "female"
+    }
+
+    val pgObject = PGobject()
+    pgObject.type = "gender" // Set the PostgreSQL enum type
+    pgObject.value = genderString
+    preparedStatement.setObject(parameterIndex, pgObject)
+}
