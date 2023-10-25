@@ -9,11 +9,11 @@ import ie.setu.utils.mapToMealLog
 class MealLogDAO {
 
     fun getAll(): ArrayList<MealLog> {
-        val activityList: ArrayList<MealLog> = arrayListOf()
+        val mealLogList: ArrayList<MealLog> = arrayListOf()
         transaction {
             MealLogs.selectAll().map {
-                activityList.add(mapToMealLog(it)) }
+                mealLogList.add(mapToMealLog(it)) }
         }
-        return activityList
+        return mealLogList
     }
 }

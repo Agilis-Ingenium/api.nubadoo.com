@@ -11,9 +11,9 @@ object Metrics : Table("metrics") {
     val bmi = double("bmi")
     val systolicBloodPressure = integer("systolic_blood_pressure")
     val diastolicBloodPressure = integer("diastolic_blood_pressure")
-    val heartRate = integer("hear_rate")
+    val heartRate = integer("heart_rate")
     val bloodSugar = double("blood_sugar")
     val sleepDuration = integer("sleep_duration")
-    val sleepQuality = varchar("activity_type",10)      // ENUM
+    val sleepQuality = varchar("sleep_quality",10)      // ENUM
     val createdAt = datetime("created_at")
 }
