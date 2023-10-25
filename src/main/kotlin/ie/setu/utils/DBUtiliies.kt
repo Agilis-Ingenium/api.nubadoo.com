@@ -25,7 +25,7 @@ fun mapToUser(it: ResultRow) = User(
     password = it[Users.password],
     firstName = it[Users.firstName],
     lastName = it[Users.lastName],
-    dateOfBirth = it[Users.dateOfBirth],
+    //dateOfBirth = it[Users.dateOfBirth],
     gender = it[Users.gender],
     registrationDate = it[Users.registrationDate]
 )
