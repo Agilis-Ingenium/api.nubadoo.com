@@ -26,8 +26,8 @@ fun mapToUser(it: ResultRow) = User(
     firstName = it[Users.firstName],
     lastName = it[Users.lastName],
     //dateOfBirth = it[Users.dateOfBirth],
-    gender = it[Users.gender],
-    registrationDate = it[Users.registrationDate]
+    //gender = it[Users.gender],
+    //registrationDate = it[Users.registrationDate]
 )
 
 fun mapToActivity(it: ResultRow) = Activity(

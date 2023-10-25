@@ -10,6 +10,6 @@ data class User(
     var firstName: String,
     var lastName: String,
     //var dateOfBirth: DateTime,
-    var gender: String,
-    var registrationDate: DateTime
+    //var gender: String,
+    //var registrationDate: DateTime?
 )

@@ -36,8 +36,8 @@ class UserDAO {
                 it[firstName] = user.firstName
                 it[lastName] = user.lastName
                 //it[dateOfBirth] = user.dateOfBirth
-                it[gender] = user.gender
-                it[registrationDate] = user.registrationDate
+                //it[gender] = user.gender
+                //it[registrationDate] = user.registrationDate
             }
         }
     }
