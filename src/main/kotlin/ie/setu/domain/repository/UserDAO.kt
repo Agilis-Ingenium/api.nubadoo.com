@@ -5,10 +5,7 @@ import ie.setu.domain.db.Users
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import ie.setu.utils.mapToUser
-import ie.setu.utils.setGenderEnum
-import ie.setu.utils.retrieveGenderEnum
 import org.jetbrains.exposed.sql.*
-import java.sql.ResultSet
 
 class UserDAO {
 
@@ -39,7 +36,7 @@ class UserDAO {
                 it[firstName] = user.firstName
                 it[lastName] = user.lastName
                 //it[dateOfBirth] = user.dateOfBirth
-                //it[gender] = user.gender
+                it[gender] = user.gender
                 //it[registrationDate] = user.registrationDate
             }
         }
