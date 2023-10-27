@@ -14,5 +14,5 @@ object Users : Table("users") {
     val lastName = varchar("last_name", 50)
     val dateOfBirth = datetime("date_of_birth").nullable()
     val gender = varchar("gender", 6)
-    val registrationDate = datetime("registration_date")
+    val registrationDate = datetime("registration_date").nullable()
 }
