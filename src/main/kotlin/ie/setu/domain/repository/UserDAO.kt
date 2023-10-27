@@ -27,8 +27,8 @@ class UserDAO {
         }
     }
 
-    fun save(user: User){
-        transaction {
+    fun save(user: User) : Int? {
+        return transaction {
             Users.insert {
                 it[username] = user.username
                 it[email] = user.email
@@ -38,7 +38,7 @@ class UserDAO {
                 it[dateOfBirth] = user.dateOfBirth
                 it[gender] = user.gender
                 it[registrationDate] = user.registrationDate
-            }
+            } get Users.userId
         }
     }
 
@@ -59,12 +59,18 @@ class UserDAO {
         }
     }
 
-    fun update(userId: Int, user: User){
-        transaction {
+    fun update(userId: Int, user: User) : Int {
+        return transaction {
             Users.update ({
                 Users.userId eq userId}) {
                 it[username] = user.username
                 it[email] = user.email
+                it[password] = user.password
+                it[firstName] = user.firstName
+                it[lastName] = user.lastName
+                it[dateOfBirth] = user.dateOfBirth
+                it[gender] = user.gender
+                //it[registrationDate] = user.registrationDate
             }
         }
     }

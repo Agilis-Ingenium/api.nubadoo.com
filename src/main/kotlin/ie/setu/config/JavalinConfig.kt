@@ -80,6 +80,12 @@ class JavalinConfig {
                 }
                 path("/fitness-goals") {
                     get(FitnessGoalController::getAllFitnessGoals)
+                    post(FitnessGoalController::addFitnessGoal)
+                    path("{fitness-goal-id}") {
+                        get(FitnessGoalController::getFitnessGoalByFitnessGoalId)
+                        delete(FitnessGoalController::deleteFitnessGoal)
+                        patch(FitnessGoalController::updateFitnessGoal)
+                    }
                 }
                 /* path("/meallogfooditems") {
                     get(MealLogFoodItemController::getAllMealLogFoodItems)

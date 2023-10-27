@@ -11,5 +11,5 @@ data class User(
     var lastName: String,
     var dateOfBirth: DateTime?,
     var gender: String,
-    var registrationDate: DateTime
+    var registrationDate: DateTime?
 )
