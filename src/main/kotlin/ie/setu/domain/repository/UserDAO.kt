@@ -2,7 +2,7 @@ package ie.setu.domain.repository
 
 import ie.setu.domain.User
 import ie.setu.domain.db.Users
-import org.jetbrains.exposed.sql.selectAll
+
 import org.jetbrains.exposed.sql.transactions.transaction
 import ie.setu.utils.mapToUser
 import org.jetbrains.exposed.sql.*
@@ -35,9 +35,9 @@ class UserDAO {
                 it[password] = user.password
                 it[firstName] = user.firstName
                 it[lastName] = user.lastName
-                //it[dateOfBirth] = user.dateOfBirth
+                it[dateOfBirth] = user.dateOfBirth
                 it[gender] = user.gender
-                //it[registrationDate] = user.registrationDate
+                it[registrationDate] = user.registrationDate
             }
         }
     }
