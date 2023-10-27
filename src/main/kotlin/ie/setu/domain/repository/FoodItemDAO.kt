@@ -1,11 +1,18 @@
 package ie.setu.domain.repository
 
 import ie.setu.domain.FoodItem
+import ie.setu.domain.User
 import ie.setu.domain.db.FoodItems
+import ie.setu.domain.db.FoodItems.autoIncrement
+import ie.setu.domain.db.FoodItems.nullable
+import ie.setu.domain.db.FoodItems.primaryKey
+import ie.setu.domain.db.Users
 
 import org.jetbrains.exposed.sql.transactions.transaction
 import ie.setu.utils.mapToFoodItem
+import ie.setu.utils.mapToUser
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 
 class FoodItemDAO {
 
@@ -27,7 +34,7 @@ class FoodItemDAO {
         }
     }
 
-    fun findById(id: Int): FoodItem?{
+    fun findById(id: Int) : FoodItem? {
         return transaction {
             FoodItems.select() {
                 FoodItems.foodItemId eq id}
@@ -36,8 +43,8 @@ class FoodItemDAO {
         }
     }
 
-    fun save(foodItem: FoodItem){
-        transaction {
+    fun save(foodItem: FoodItem) : Int? {
+        return transaction {
             FoodItems.insert {
                 it[name] = foodItem.name
                 it[calories] = foodItem.calories
@@ -46,11 +53,11 @@ class FoodItemDAO {
                 it[fats] = foodItem.fats
                 it[vitamins] = foodItem.vitamins
                 it[minerals] = foodItem.minerals
-            }
+            } get FoodItems.foodItemId
         }
     }
 
-    fun delete(foodItemId: Int):Int{
+    fun delete(foodItemId: Int) : Int {
         return transaction{
             FoodItems.deleteWhere{
                 FoodItems.foodItemId eq foodItemId
@@ -58,11 +65,17 @@ class FoodItemDAO {
         }
     }
 
-    fun update(foodItemId: Int, foodItems: FoodItems){
-        transaction {
+    fun update(foodItemId: Int, foodItem: FoodItem) : Int {
+        return transaction {
             FoodItems.update ({
                 FoodItems.foodItemId eq foodItemId}) {
-                it[name] = foodItems.name.toString()
+                it[name] = foodItem.name
+                it[calories] = foodItem.calories
+                it[carbohydrates] = foodItem.carbohydrates
+                it[proteins] = foodItem.proteins
+                it[fats] = foodItem.fats
+                it[vitamins] = foodItem.vitamins
+                it[minerals] = foodItem.minerals
             }
         }
     }

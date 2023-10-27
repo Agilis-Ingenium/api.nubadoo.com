@@ -73,7 +73,6 @@ class JavalinConfig {
                     post(FoodItemController::addFoodItem)
                     path("{food-item-id}") {
                         get(FoodItemController::getFoodItemByFoodItemId)
-                        //get(FoodItemController::getFoodItemByFoodItemName)
                         delete(FoodItemController::deleteFoodItem)
                         patch(FoodItemController::updateFoodItem)
                     }
