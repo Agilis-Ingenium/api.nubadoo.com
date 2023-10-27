@@ -24,7 +24,16 @@ class JavalinConfig {
     }
 
     fun startJavalinService(): Javalin {
-        app.start(getRemoteAssignedPort())
+        val app = Javalin.create {
+            //add this jsonMapper to serialise objects to json
+            it.jsonMapper(JavalinJackson(jsonObjectMapper()))
+        }
+            .apply{
+                exception(Exception::class.java) { e, ctx -> e.printStackTrace() }
+                error(404) { ctx -> ctx.json("404 - Not Found") }
+            }
+            .start(getRemoteAssignedPort())
+
         registerRoutes(app)
         return app
     }
@@ -59,10 +68,14 @@ class JavalinConfig {
                 path("/activities") {
                     get(ActivityController::getAllActivities)
                 }
-                path("/food-items") {
+                path("food-items") {
                     get(FoodItemController::getAllFoodItems)
-                    path("{name}") {
-                        get(FoodItemController::getFoodByFoodItemName)
+                    post(FoodItemController::addFoodItem)
+                    path("{food-item-id}") {
+                        get(FoodItemController::getFoodItemByFoodItemId)
+                        //get(FoodItemController::getFoodItemByFoodItemName)
+                        delete(FoodItemController::deleteFoodItem)
+                        patch(FoodItemController::updateFoodItem)
                     }
                 }
                 path("/fitness-goals") {

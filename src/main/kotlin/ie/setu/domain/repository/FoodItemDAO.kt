@@ -3,11 +3,9 @@ package ie.setu.domain.repository
 import ie.setu.domain.FoodItem
 import ie.setu.domain.db.FoodItems
 
-import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import ie.setu.utils.mapToFoodItem
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.*
 
 class FoodItemDAO {
 
@@ -26,6 +24,46 @@ class FoodItemDAO {
                 FoodItems.name eq name}
                 .map{ mapToFoodItem(it) }
                 .firstOrNull()
+        }
+    }
+
+    fun findById(id: Int): FoodItem?{
+        return transaction {
+            FoodItems.select() {
+                FoodItems.foodItemId eq id}
+                .map{ mapToFoodItem(it) }
+                .firstOrNull()
+        }
+    }
+
+    fun save(foodItem: FoodItem){
+        transaction {
+            FoodItems.insert {
+                it[name] = foodItem.name
+                it[calories] = foodItem.calories
+                it[carbohydrates] = foodItem.carbohydrates
+                it[proteins] = foodItem.proteins
+                it[fats] = foodItem.fats
+                it[vitamins] = foodItem.vitamins
+                it[minerals] = foodItem.minerals
+            }
+        }
+    }
+
+    fun delete(foodItemId: Int):Int{
+        return transaction{
+            FoodItems.deleteWhere{
+                FoodItems.foodItemId eq foodItemId
+            }
+        }
+    }
+
+    fun update(foodItemId: Int, foodItems: FoodItems){
+        transaction {
+            FoodItems.update ({
+                FoodItems.foodItemId eq foodItemId}) {
+                it[name] = foodItems.name.toString()
+            }
         }
     }
 }

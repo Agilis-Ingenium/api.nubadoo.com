@@ -25,9 +25,9 @@ fun mapToUser(it: ResultRow) = User(
     password = it[Users.password],
     firstName = it[Users.firstName],
     lastName = it[Users.lastName],
-    //dateOfBirth = it[Users.dateOfBirth],
+    dateOfBirth = it[Users.dateOfBirth],
     gender = it[Users.gender],
-    //registrationDate = it[Users.registrationDate]
+    registrationDate = it[Users.registrationDate]
 )
 
 fun mapToActivity(it: ResultRow) = Activity(
@@ -41,7 +41,7 @@ fun mapToActivity(it: ResultRow) = Activity(
 )
 
 fun mapToFoodItem(it: ResultRow) = FoodItem(
-    foodId = it[FoodItems.foodId],
+    foodItemId = it[FoodItems.foodItemId],
     name = it[FoodItems.name],
     calories = it[FoodItems.calories],
     carbohydrates = it[FoodItems.carbohydrates],
