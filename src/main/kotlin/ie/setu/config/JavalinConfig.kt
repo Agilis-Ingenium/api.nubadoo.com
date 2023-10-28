@@ -95,8 +95,14 @@ class JavalinConfig {
                 path("/metrics") {
                     get(MetricController::getAllMetrics)
                 }
-                path("//workout-plans") {
+                path("/workout-plans") {
                     get(WorkoutPlanController::getAllWorkoutPlans)
+                    post(WorkoutPlanController::addWorkoutPlan)
+                    path("{workout-plan-id}") {
+                        get(WorkoutPlanController::getWorkoutPlanByWorkoutPlanId)
+                        delete(WorkoutPlanController::deleteWorkoutPlan)
+                        patch(WorkoutPlanController::updateWorkoutPlan)
+                    }
                 }
                 path("/ping") {
                     get(PongController::pong)
