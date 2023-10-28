@@ -239,6 +239,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <outputDir>${project.basedir}/target/documentation/dokka</outputDir>
+                </configuration>
             </plugin>
         </plugins>
     </build>
