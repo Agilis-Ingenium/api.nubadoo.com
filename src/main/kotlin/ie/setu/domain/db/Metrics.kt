@@ -3,6 +3,12 @@ package ie.setu.domain.db
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.ReferenceOption
 
+/**
+ * Represents the "metrics" table in the database.
+ *
+ * This table stores various health metrics and measurements for users, including weight, height, blood pressure,
+ * heart rate, sleep data, and more.
+ */
 object Metrics : Table("metrics") {
     val metricId = integer("metric_id").autoIncrement().primaryKey()
     val userId = integer("user_id").references(Users.userId, onDelete = ReferenceOption.CASCADE)

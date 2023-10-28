@@ -2,6 +2,11 @@ package ie.setu.domain.db
 
 import org.jetbrains.exposed.sql.Table
 
+/**
+ * Represents the "food_items" table in the database.
+ *
+ * This table stores information about food items, including their name, nutritional values, vitamins, and minerals.
+ */
 object FoodItems : Table("food_items") {
     val foodItemId = integer("food_id").autoIncrement().primaryKey()
     val name = varchar("name",255)
