@@ -4,10 +4,20 @@ import org.jetbrains.exposed.sql.Database
 import mu.KotlinLogging
 import org.jetbrains.exposed.sql.name
 
+/**
+ * Configuration class for establishing a database connection to the PostgreSQL database.
+ *
+ * This class provides the necessary parameters and settings to connect to the database.
+ */
 class DbConfig{
 
     private val logger = KotlinLogging.logger {}
 
+    /**
+     * Establishes a connection to the PostgreSQL database and returns a [Database] instance.
+     *
+     * @return A [Database] instance representing the established database connection.
+     */
     fun getDbConnection() :Database{
 
         logger.info{"Starting DB Connection..."}
