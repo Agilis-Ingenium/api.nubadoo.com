@@ -7,8 +7,20 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import ie.setu.utils.mapToUser
 import org.jetbrains.exposed.sql.*
 
+/**
+ * Data Access Object (DAO) for managing user-related data in the Health Tracker app.
+ *
+ * This class provides methods to retrieve, create, update, and delete user data in the database.
+ *
+ * @author Warren Byron (adapted from SETU Msc Computing Agile Dev course content).
+ */
 class UserDAO {
 
+    /**
+     * Retrieves a list of all users from the database.
+     *
+     * @return An ArrayList of [User] objects representing all users.
+     */
     fun getAll(): ArrayList<User> {
         val userList: ArrayList<User> = arrayListOf()
         transaction {
@@ -18,6 +30,12 @@ class UserDAO {
         return userList
     }
 
+    /**
+     * Retrieves a user by their unique identifier.
+     *
+     * @param id The unique identifier of the user to retrieve.
+     * @return A [User] object representing the user with the specified ID, or null if not found.
+     */
     fun findById(id: Int): User?{
         return transaction {
             Users.select() {
@@ -27,6 +45,12 @@ class UserDAO {
         }
     }
 
+    /**
+     * Saves a new user to the database.
+     *
+     * @param user The [User] object to be saved.
+     * @return The unique identifier (userId) of the newly saved user.
+     */
     fun save(user: User) : Int? {
         return transaction {
             Users.insert {
@@ -42,6 +66,12 @@ class UserDAO {
         }
     }
 
+    /**
+     * Retrieves a user by their email address.
+     *
+     * @param email The email address of the user to retrieve.
+     * @return A [User] object representing the user with the specified email, or null if not found.
+     */
     fun findByEmail(email: String) :User?{
         return transaction {
             Users.select() {
@@ -51,6 +81,12 @@ class UserDAO {
         }
     }
 
+    /**
+     * Deletes a user from the database by their unique identifier.
+     *
+     * @param userId The unique identifier of the user to delete.
+     * @return The number of rows affected by the deletion operation.
+     */
     fun delete(userId: Int):Int{
         return transaction{
             Users.deleteWhere{
@@ -59,6 +95,13 @@ class UserDAO {
         }
     }
 
+    /**
+     * Updates an existing user in the database.
+     *
+     * @param userId The unique identifier of the user to update.
+     * @param user The updated [User] object.
+     * @return The number of rows affected by the update operation.
+     */
     fun update(userId: Int, user: User) : Int {
         return transaction {
             Users.update ({

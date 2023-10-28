@@ -6,8 +6,20 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import ie.setu.utils.mapToWorkoutPlan
 import org.jetbrains.exposed.sql.*
 
+/**
+ * Data Access Object (DAO) for managing workout plan-related data in the Health Tracker app.
+ *
+ * This class provides methods to retrieve, create, update, and delete workout plans in the database.
+ *
+ * @author Your Name (or the name of the author/contributor).
+ */
 class WorkoutPlanDAO {
 
+    /**
+     * Retrieves a list of all workout plans from the database.
+     *
+     * @return An ArrayList of [WorkoutPlan] objects representing all workout plans.
+     */
     fun getAll(): ArrayList<WorkoutPlan> {
         val workoutPlanList: ArrayList<WorkoutPlan> = arrayListOf()
         transaction {
@@ -17,6 +29,12 @@ class WorkoutPlanDAO {
         return workoutPlanList
     }
 
+    /**
+     * Retrieves a workout plan by its unique identifier.
+     *
+     * @param id The unique identifier of the workout plan to retrieve.
+     * @return A [WorkoutPlan] object representing the workout plan with the specified ID, or null if not found.
+     */
     fun findById(id: Int): WorkoutPlan?{
         return transaction {
             WorkoutPlans.select() {
@@ -26,6 +44,12 @@ class WorkoutPlanDAO {
         }
     }
 
+    /**
+     * Saves a new workout plan to the database.
+     *
+     * @param workoutPlan The [WorkoutPlan] object to be saved.
+     * @return The unique identifier (planId) of the newly saved workout plan.
+     */
     fun save(workoutPlan: WorkoutPlan) : Int? {
         return transaction {
             WorkoutPlans.insert {
@@ -38,6 +62,13 @@ class WorkoutPlanDAO {
         }
     }
 
+    /**
+     * Updates an existing workout plan in the database.
+     *
+     * @param workoutPlanId The unique identifier of the workout plan to update.
+     * @param workoutPlan The updated [WorkoutPlan] object.
+     * @return The number of rows affected by the update operation.
+     */
     fun update(workoutPlanId: Int, workoutPlan: WorkoutPlan) : Int {
         return transaction {
             WorkoutPlans.update ({
@@ -50,6 +81,12 @@ class WorkoutPlanDAO {
         }
     }
 
+    /**
+     * Deletes a workout plan from the database by its unique identifier.
+     *
+     * @param workoutPlanId The unique identifier of the workout plan to delete.
+     * @return The number of rows affected by the deletion operation.
+     */
     fun delete(workoutPlanId: Int):Int{
         return transaction{
             WorkoutPlans.deleteWhere{
