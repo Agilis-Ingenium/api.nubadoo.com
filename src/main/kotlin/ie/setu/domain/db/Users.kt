@@ -1,10 +1,13 @@
 package ie.setu.domain.db
 
-import ie.setu.domain.User
-import ie.setu.domain.db.Activities.nullable
 import org.jetbrains.exposed.sql.Table
 
-
+/**
+ * Represents the "users" table in the database.
+ *
+ * This table stores user data, including user IDs, usernames, email addresses, passwords, first and last names,
+ * date of birth, gender, and registration dates.
+ */
 object Users : Table("users") {
     val userId = integer("user_id").autoIncrement().primaryKey()
     val username = varchar("username", 50)

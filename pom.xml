@@ -160,7 +160,6 @@
             <version>5.5.0</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -225,6 +224,23 @@
                             <mainClass>ie.setu.AppKt</mainClass>
                         </manifest>
                     </archive>
+                </configuration>
+            </plugin>
+            <!-- Add dokka documentation to Maven -->
+            <plugin>
+                <groupId>org.jetbrains.dokka</groupId>
+                <artifactId>dokka-maven-plugin</artifactId>
+                <version>1.9.10</version>
+                <executions>
+                    <execution>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>dokka</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <outputDir>${project.basedir}/target/documentation/dokka</outputDir>
                 </configuration>
             </plugin>
         </plugins>

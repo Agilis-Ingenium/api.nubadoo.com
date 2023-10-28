@@ -9,10 +9,17 @@ import ie.setu.domain.FoodItem
 import ie.setu.domain.User
 import ie.setu.utils.jsonToObject
 
+/**
+ * Controller for managing food items.
+ */
 object FoodItemController {
 
     private val foodItemDao = FoodItemDAO()
 
+    /**
+     * Get a list of all food items.
+     * @param ctx The Javalin context for handling HTTP requests.
+     */
     fun getAllFoodItems(ctx: Context) {
         val foodItems = foodItemDao.getAll()
         if (foodItems.size != 0) {
@@ -24,6 +31,10 @@ object FoodItemController {
         ctx.json(foodItems)
     }
 
+    /**
+     * Get a specific food item by its ID.
+     * @param ctx The Javalin context for handling HTTP requests.
+     */
     fun getFoodItemByFoodItemId(ctx: Context) {
         val foodItem = foodItemDao.findById(ctx.pathParam("food-item-id").toInt())
         if (foodItem != null) {
@@ -35,6 +46,10 @@ object FoodItemController {
         }
     }
 
+    /**
+     * Add a new food item.
+     * @param ctx The Javalin context for handling HTTP requests.
+     */
     fun addFoodItem(ctx: Context) {
         val foodItem : FoodItem = jsonToObject(ctx.body())
         val foodItemId = foodItemDao.save(foodItem)
@@ -45,7 +60,10 @@ object FoodItemController {
         }
     }
 
-
+    /**
+     * Delete a food item by its ID.
+     * @param ctx The Javalin context for handling HTTP requests.
+     */
     fun deleteFoodItem(ctx: Context) {
         if (foodItemDao.delete(ctx.pathParam("food-item-id").toInt()) != 0)
             ctx.status(204)
@@ -53,6 +71,10 @@ object FoodItemController {
             ctx.status(404)
     }
 
+    /**
+     * Update an existing food item.
+     * @param ctx The Javalin context for handling HTTP requests.
+     */
     fun updateFoodItem(ctx: Context) {
         val foundFoodItem : FoodItem = jsonToObject(ctx.body())
         if ((FoodItemController.foodItemDao.update(foodItemId = ctx.pathParam("food-item-id").toInt(), foodItem=foundFoodItem)) != 0)

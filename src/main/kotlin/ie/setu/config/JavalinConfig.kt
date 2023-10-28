@@ -7,6 +7,10 @@ import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
 import io.javalin.json.JavalinJackson
 
+/**
+ * Configuration class for setting up the Javalin web framework.
+ * This class initializes Javalin and configures routes and settings.
+ */
 class JavalinConfig {
 
     val app = Javalin.create {
@@ -23,6 +27,11 @@ class JavalinConfig {
         error(404) { ctx -> ctx.json("404 : Not Found") }
     }
 
+    /**
+     * Starts the Javalin web service, registers routes, and returns the Javalin instance.
+     *
+     * @return The Javalin instance representing the started web service.
+     */
     fun startJavalinService(): Javalin {
         val app = Javalin.create {
             //add this jsonMapper to serialise objects to json
@@ -38,6 +47,11 @@ class JavalinConfig {
         return app
     }
 
+    /**
+     * Gets the Javalin service instance.
+     *
+     * @return The Javalin instance representing the web service.
+     */
     fun getJavalinService(): Javalin {
         registerRoutes(app)
         return app
