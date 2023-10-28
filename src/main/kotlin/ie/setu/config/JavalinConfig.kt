@@ -6,6 +6,12 @@ import ie.setu.utils.jsonObjectMapper
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
 import io.javalin.json.JavalinJackson
+import io.javalin.openapi.plugin.OpenApiConfiguration
+import io.javalin.openapi.plugin.OpenApiPlugin
+import io.javalin.openapi.plugin.redoc.ReDocConfiguration
+import io.javalin.openapi.plugin.redoc.ReDocPlugin
+import io.javalin.openapi.plugin.swagger.SwaggerConfiguration
+import io.javalin.openapi.plugin.swagger.SwaggerPlugin
 
 /**
  * Configuration class for setting up the Javalin web framework.
@@ -36,7 +42,12 @@ class JavalinConfig {
         val app = Javalin.create {
             //add this jsonMapper to serialise objects to json
             it.jsonMapper(JavalinJackson(jsonObjectMapper()))
-        }
+            it.plugins.register(SwaggerPlugin(SwaggerConfiguration()))
+            it.plugins.register(ReDocPlugin(ReDocConfiguration()))
+            it.plugins.register(OpenApiPlugin(OpenApiConfiguration().apply {
+                info.title = "Javalin OpenAIP example"
+            }))
+            }
             .apply{
                 exception(Exception::class.java) { e, ctx -> e.printStackTrace() }
                 error(404) { ctx -> ctx.json("404 - Not Found") }
