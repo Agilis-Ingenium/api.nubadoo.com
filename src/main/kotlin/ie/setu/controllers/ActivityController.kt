@@ -5,9 +5,11 @@ import com.fasterxml.jackson.datatype.joda.JodaModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.javalin.http.Context
 import ie.setu.domain.Activity
+import ie.setu.domain.FitnessGoal
 import ie.setu.domain.repository.ActivityDAO
 import ie.setu.domain.repository.UserDAO
 import ie.setu.utils.jsonToObject
+import io.javalin.openapi.*
 
 /**
  * Controller for managing activity-related operations in the Health Tracker app.
@@ -22,6 +24,17 @@ object ActivityController {
      * Retrieves a list of all activities and serializes them to JSON.
      * @param ctx The Javalin context for handling HTTP requests.
      */
+    @OpenApi(
+        summary = "Get all activities",
+        operationId = "getAllActivities",
+        tags = ["Activity"],
+        responses = [
+            OpenApiResponse("200", [OpenApiContent(Array<Activity>::class)]),
+            OpenApiResponse("404", [OpenApiContent(String::class)])
+        ],
+        path = "/v1/activities",
+        methods = [HttpMethod.GET]
+    )
     fun getAllActivities(ctx: Context) {
         //mapper handles the deserialization of Joda date into a String.
         val mapper = jacksonObjectMapper()
@@ -34,6 +47,17 @@ object ActivityController {
      * Retrieves activities by user ID and serializes them to JSON.
      * @param ctx The Javalin context for handling HTTP requests.
      */
+    @OpenApi(
+        summary = "Get activities by user ID",
+        operationId = "getActivitiesByUserId",
+        tags = ["Activity"],
+        responses = [
+            OpenApiResponse("200", [OpenApiContent(Array<Activity>::class)]),
+            OpenApiResponse("404", [OpenApiContent(String::class)])
+        ],
+        path = "/v1/activities/user/{user-id}",
+        methods = [HttpMethod.GET]
+    )
     fun getActivitiesByUserId(ctx: Context) {
         if (userDao.findById(ctx.pathParam("user-id").toInt()) != null) {
             val activities = activityDao.findByUserId(ctx.pathParam("user-id").toInt())
@@ -66,6 +90,18 @@ object ActivityController {
      * Adds a new activity and returns it as JSON.
      * @param ctx The Javalin context for handling HTTP requests.
      */
+    @OpenApi(
+        summary = "Add a new activity",
+        operationId = "addActivity",
+        tags = ["Activity"],
+        requestBody = OpenApiRequestBody([OpenApiContent(Activity::class)]),
+        responses = [
+            OpenApiResponse("201", [OpenApiContent(Activity::class)]),
+            OpenApiResponse("400", [OpenApiContent(String::class)])
+        ],
+        path = "/v1/activities",
+        methods = [HttpMethod.POST]
+    )
     fun addActivity(ctx: Context) {
         val activity : Activity = jsonToObject(ctx.body())
         val activityId = activityDao.save(activity)
