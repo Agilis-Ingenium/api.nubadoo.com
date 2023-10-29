@@ -85,6 +85,9 @@ class JavalinConfig {
                         get(UserController::getUserByUserId)
                         delete(UserController::deleteUser)
                         patch(UserController::updateUser)
+                        path("activities"){
+                            get(ActivityController::getActivitiesByUserId)
+                        }
                     }
                     path("/email/{email}") {
                         get(UserController::getUserByEmail)
@@ -92,6 +95,7 @@ class JavalinConfig {
                 }
                 path("/activities") {
                     get(ActivityController::getAllActivities)
+                    post(ActivityController::addActivity)
                 }
                 path("food-items") {
                     get(FoodItemController::getAllFoodItems)
