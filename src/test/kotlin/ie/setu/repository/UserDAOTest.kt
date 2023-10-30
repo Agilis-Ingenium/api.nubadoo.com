@@ -137,7 +137,16 @@ class UserDAOTest {
                 //Act & Assert
                 val user3Updated = User(3, "new username", "new@email.ie", password = "password123", dateOfBirth = DateTime.parse("2023-10-24"), firstName = "John", lastName = "Doe", gender = "male", registrationDate = DateTime.parse("2023-10-24"))
                 userDAO.update(user3.userId, user3Updated)
-                assertEquals(user3Updated, userDAO.findById(3))
+
+                // reegistrationDate is not an update able field - so force it
+                val toCompare = userDAO.findById(3)
+                if (toCompare != null) {
+                    toCompare.registrationDate = null
+                }
+                user3Updated.registrationDate = null
+
+
+                assertEquals(user3Updated, toCompare)
             }
         }
 
