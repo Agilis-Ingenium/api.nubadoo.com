@@ -4,6 +4,7 @@ import ie.setu.domain.User
 import ie.setu.domain.WorkoutPlan
 import ie.setu.domain.FoodItem
 import ie.setu.domain.Activity
+import ie.setu.domain.FitnessGoal
 import org.joda.time.DateTime
 
 val nonExistingEmail = "112233445566778testUser@xxxxx.xx"
@@ -35,4 +36,10 @@ val activities = arrayListOf<Activity>(
     Activity(activityId = 1, userId = 1, activityType = "yoga", durationMinutes = 30, distanceKm = 2.0, workoutIntensity = "low", activityDate = DateTime.now()),
     Activity(activityId = 2, userId = 1, activityType = "running", durationMinutes = 45, distanceKm = 5.2, workoutIntensity = "moderate", activityDate = DateTime.now()),
     Activity(activityId = 3, userId = 1, activityType = "swimming", durationMinutes = 60, distanceKm = 1.5, workoutIntensity ="high", activityDate = DateTime.now())
+)
+
+val fitnessgoals = arrayListOf<FitnessGoal>(
+    FitnessGoal(goalId = 1, userId = 1, goalType = "weight", targetValue = 10.0, targetDate = DateTime.now()),
+    FitnessGoal(goalId = 2, userId =1, goalType = "muscle", targetValue = 5.0, targetDate = DateTime.now()),
+    FitnessGoal(goalId = 3, userId =1, goalType = "fitness", targetValue = 10.0, targetDate = DateTime.now())
 )

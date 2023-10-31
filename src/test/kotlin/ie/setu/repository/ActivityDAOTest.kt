@@ -1,12 +1,10 @@
 package ie.setu.repository
 
-import ie.setu.domain.Activity
 import ie.setu.domain.db.Users
 import ie.setu.domain.db.Activities
 import ie.setu.domain.repository.UserDAO
 import ie.setu.domain.repository.ActivityDAO
 import ie.setu.helpers.activities
-import ie.setu.helpers.users
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
@@ -14,7 +12,6 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import org.joda.time.DateTime
 
 //retrieving some test data from Fixtures
 val activity1 = activities.get(0)
