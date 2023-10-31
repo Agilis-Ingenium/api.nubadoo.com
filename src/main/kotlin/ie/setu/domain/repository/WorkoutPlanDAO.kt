@@ -50,7 +50,7 @@ class WorkoutPlanDAO {
      * @param workoutPlan The [WorkoutPlan] object to be saved.
      * @return The unique identifier (planId) of the newly saved workout plan.
      */
-    fun save(workoutPlan: WorkoutPlan) : Int? {
+    fun save(workoutPlan: WorkoutPlan) : Int {
         return transaction {
             WorkoutPlans.insert {
                 //it[planId] = workoutPlan.planId
