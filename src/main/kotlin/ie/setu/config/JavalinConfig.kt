@@ -100,6 +100,7 @@ class JavalinConfig {
                     path("{activity-id}") {
                         delete(ActivityController::deleteActivity)
                         patch(ActivityController::updateActivity)
+                        get(ActivityController::getActivityByActivityId)
                     }
                 }
                 path("food-items") {

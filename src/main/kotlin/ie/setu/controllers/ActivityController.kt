@@ -188,4 +188,30 @@ object ActivityController {
         else
             ctx.status(404)
     }
+
+    /**
+     * Gets an activity by activity ID.
+     * @param ctx The Javalin context for handling HTTP requests.
+     */
+    @OpenApi(
+        summary = "Get an activity by activity ID",
+        operationId = "getActivityByActivityId",
+        tags = ["Activity"],
+        responses = [
+            OpenApiResponse("200", [OpenApiContent(User::class)]),
+            OpenApiResponse("404", [OpenApiContent(String::class)])
+        ],
+        path = "/v1/activities/{activity-id}",
+        methods = [HttpMethod.GET]
+    )
+    fun getActivityByActivityId(ctx: Context) {
+        val activity = ActivityController.activityDao.findById(ctx.pathParam("activity-id").toInt())
+        if (activity != null) {
+            ctx.json(activity)
+            ctx.status(200)
+        }
+        else{
+            ctx.status(404)
+        }
+    }
 }
