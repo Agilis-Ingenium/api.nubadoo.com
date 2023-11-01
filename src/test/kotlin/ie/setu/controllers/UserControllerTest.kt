@@ -2,7 +2,6 @@ package ie.setu.controllers
 
 import ie.setu.config.DbConfig
 import ie.setu.domain.User
-import ie.setu.helpers.ServerContainer
 import ie.setu.helpers.*
 import ie.setu.utils.jsonToObject
 import kong.unirest.Unirest
@@ -59,11 +58,11 @@ class HealthTrackerControllerTest {
             val addedUser: User = jsonToObject(addResponse.body.toString())
 
             //Assert - retrieve the added user from the database and verify return code
-            val retrieveResponse = retrieveUserById(addedUser.id)
+            val retrieveResponse = retrieveUserById(addedUser.userId)
             assertEquals(200, retrieveResponse.status)
 
             //After - restore the db to previous state by deleting the added user
-            deleteUser(addedUser.id)
+            deleteUser(addedUser.userId)
         }
 
         @Test
@@ -78,7 +77,7 @@ class HealthTrackerControllerTest {
 
             //After - restore the db to previous state by deleting the added user
             val retrievedUser: User = jsonToObject(retrieveResponse.body.toString())
-            deleteUser(retrievedUser.id)
+            deleteUser(retrievedUser.userId)
         }
     }
 
@@ -99,10 +98,10 @@ class HealthTrackerControllerTest {
             //Assert - verify the contents of the retrieved user
             val retrievedUser: User = jsonToObject(addResponse.body.toString())
             assertEquals(validEmail, retrievedUser.email)
-            assertEquals(validName, retrievedUser.name)
+            assertEquals(validName, retrievedUser.username)
 
             //After - restore the db to previous state by deleting the added user
-            val deleteResponse = deleteUser(retrievedUser.id)
+            val deleteResponse = deleteUser(retrievedUser.userId)
             assertEquals(204, deleteResponse.status)
         }
     }
@@ -117,16 +116,17 @@ class HealthTrackerControllerTest {
             val addedUser: User = jsonToObject(addedResponse.body.toString())
 
             //Act & Assert - update the email and name of the retrieved user and assert 204 is returned
-            assertEquals(204, updateUser(addedUser.id, updatedName, updatedEmail).status)
+            assertEquals(204, updateUser(addedUser.userId, updatedName, updatedEmail).status)
 
             //Act & Assert - retrieve updated user and assert details are correct
-            val updatedUserResponse = retrieveUserById(addedUser.id)
+            val updatedUserResponse = retrieveUserById(addedUser.userId)
             val updatedUser: User = jsonToObject(updatedUserResponse.body.toString())
-            assertEquals(updatedName, updatedUser.name)
+            assertEquals(updatedName, updatedUser.username)
+            //assertEquals(updatedName, updatedUser.lastName)
             assertEquals(updatedEmail, updatedUser.email)
 
             //After - restore the db to previous state by deleting the added user
-            deleteUser(addedUser.id)
+            deleteUser(addedUser.userId)
         }
 
         @Test
@@ -153,10 +153,10 @@ class HealthTrackerControllerTest {
             val addedUser: User = jsonToObject(addedResponse.body.toString())
 
             //Act & Assert - delete the added user and assert a 204 is returned
-            assertEquals(204, deleteUser(addedUser.id).status)
+            assertEquals(204, deleteUser(addedUser.userId).status)
 
             //Act & Assert - attempt to retrieve the deleted user --> 404 response
-            assertEquals(404, retrieveUserById(addedUser.id).status)
+            assertEquals(404, retrieveUserById(addedUser.userId).status)
         }
     }
 }
