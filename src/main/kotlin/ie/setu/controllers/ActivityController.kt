@@ -77,7 +77,7 @@ object ActivityController {
 
 
     //fun addActivity(ctx: Context) {
-        //mapper handles the serialisation of Joda date into a String.
+    //mapper handles the serialisation of Joda date into a String.
     //    val mapper = jacksonObjectMapper()
     //        .registerModule(JodaModule())
     //        .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
@@ -103,12 +103,42 @@ object ActivityController {
         methods = [HttpMethod.POST]
     )
     fun addActivity(ctx: Context) {
-        val activity : Activity = jsonToObject(ctx.body())
+        val activity: Activity = jsonToObject(ctx.body())
         val activityId = activityDao.save(activity)
         if (activityId != null) {
             activity.activityId = activityId
             ctx.json(activity)
             ctx.status(201)
+        }
+    }
+
+    // LAB 6 - EXERCISES
+
+    /**
+     * Deletes activities by user ID.
+     * @param ctx The Javalin context for handling HTTP requests.
+     */
+    @OpenApi(
+        summary = "Delete activities by user ID",
+        operationId = "deleteActivitiesByUserId",
+        tags = ["Activity"],
+        responses = [
+            OpenApiResponse("200", [OpenApiContent(Array<Activity>::class)]),
+            OpenApiResponse("404", [OpenApiContent(String::class)])
+        ],
+        path = "/v1/activities/user/{user-id}",
+        methods = [HttpMethod.DELETE]
+    )
+    fun deleteActivitiesByUserId(ctx: Context) {
+        if (ActivityController.userDao.findById(ctx.pathParam("user-id").toInt()) != null) {
+            val activities = ActivityController.activityDao.findByUserId(ctx.pathParam("user-id").toInt())
+            if (activities.isNotEmpty()) {
+                activities.forEach {
+                    activityDao.delete(it.activityId)
+                }
+            }
+            else
+                ctx.status(404)
         }
     }
 }
