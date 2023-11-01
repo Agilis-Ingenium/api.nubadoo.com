@@ -87,6 +87,7 @@ class JavalinConfig {
                         patch(UserController::updateUser)
                         path("activities"){
                             get(ActivityController::getActivitiesByUserId)
+                            delete(ActivityController::deleteActivitiesByUserId)
                         }
                     }
                     path("/email/{email}") {

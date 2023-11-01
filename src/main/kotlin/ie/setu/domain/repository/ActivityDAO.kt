@@ -24,7 +24,8 @@ class ActivityDAO {
         val activitiesList: ArrayList<Activity> = arrayListOf()
         transaction {
             Activities.selectAll().map {
-                activitiesList.add(mapToActivity(it)) }
+                activitiesList.add(mapToActivity(it))
+            }
         }
         return activitiesList
     }
@@ -34,11 +35,11 @@ class ActivityDAO {
      * @param id The ID of the activity to find.
      * @return The found activity or null if not found.
      */
-    fun findByActivityId(id: Int): Activity?{
+    fun findByActivityId(id: Int): Activity? {
         return transaction {
             Activities
-                .select() { Activities.activityId eq id}
-                .map{mapToActivity(it)}
+                .select() { Activities.activityId eq id }
+                .map { mapToActivity(it) }
                 .firstOrNull()
         }
     }
@@ -48,11 +49,11 @@ class ActivityDAO {
      * @param userId The user ID for which to find activities.
      * @return A list of activities associated with the given user ID.
      */
-    fun findByUserId(userId: Int): List<Activity>{
+    fun findByUserId(userId: Int): List<Activity> {
         return transaction {
             Activities
-                .select {Activities.userId eq userId}
-                .map {mapToActivity(it)}
+                .select { Activities.userId eq userId }
+                .map { mapToActivity(it) }
         }
     }
 
@@ -61,7 +62,7 @@ class ActivityDAO {
      * @param activity The activity to save.
      * @return The unique identifier (activityId) of the newly saved activity.
      */
-    fun save(activity: Activity) : Int {
+    fun save(activity: Activity): Int {
         return transaction {
             Activities.insert {
                 it[distanceKM] = activity.distanceKm
@@ -71,6 +72,20 @@ class ActivityDAO {
                 it[userId] = activity.userId
                 it[activityDate] = activity.activityDate
             } get Activities.activityId
+        }
+    }
+
+    /**
+     * Deletes an activity from the database by its unique identifier.
+     *
+     * @param activityId The unique identifier of the fitness goal to delete.
+     * @return The number of rows affected by the deletion operation.
+     */
+    fun delete(activityId: Int):Int{
+        return transaction{
+            Activities.deleteWhere{
+                Activities.activityId eq activityId
+            }
         }
     }
 }
