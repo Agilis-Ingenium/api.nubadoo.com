@@ -10,6 +10,13 @@ import org.joda.time.DateTime
 val nonExistingEmail = "112233445566778testUser@xxxxx.xx"
 val validName = "Test User 1"
 val validEmail = "testuser1@test.com"
+val updatedName = "Updated Name"
+val updatedEmail = "Updated Email"
+
+val updatedDescription = "Updated Description"
+val updatedDuration = 30.0
+val updatedCalories = 945
+val updatedStarted = DateTime.parse("2020-06-11T05:59:27.258Z")
 
 val users = arrayListOf<User>(
     User(userId = 1, username = "mary_jones", email = "mary@example.com", password = "secure123", firstName = "Mary", lastName = "Jones", registrationDate = DateTime.now(), dateOfBirth = DateTime.now(), gender = "female",),
