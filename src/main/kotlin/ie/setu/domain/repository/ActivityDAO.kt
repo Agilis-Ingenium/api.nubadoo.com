@@ -39,7 +39,7 @@ class ActivityDAO {
      * @param id The ID of the activity to find.
      * @return The found activity or null if not found.
      */
-    fun findByActivityId(id: Int): Activity? {
+    fun findById(id: Int): Activity? {
         return transaction {
             Activities
                 .select() { Activities.activityId eq id }
