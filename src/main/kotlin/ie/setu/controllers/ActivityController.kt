@@ -6,6 +6,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.javalin.http.Context
 import ie.setu.domain.Activity
 import ie.setu.domain.FitnessGoal
+import ie.setu.domain.User
 import ie.setu.domain.repository.ActivityDAO
 import ie.setu.domain.repository.UserDAO
 import ie.setu.utils.jsonToObject
@@ -159,6 +160,30 @@ object ActivityController {
     )
     fun deleteActivity(ctx: Context){
         if (ActivityController.activityDao.delete(ctx.pathParam("activity-id").toInt()) != 0)
+            ctx.status(204)
+        else
+            ctx.status(404)
+    }
+
+    /**
+     * Updates an activity's information by the activity ID.
+     * @param ctx The Javalin context for handling HTTP requests.
+     */
+    @OpenApi(
+        summary = "Update an activity's information by the activity ID",
+        operationId = "updateActivity",
+        tags = ["Activity"],
+        requestBody = OpenApiRequestBody([OpenApiContent(Activity::class)]),
+        responses = [
+            OpenApiResponse("204", description = "User updated"),
+            OpenApiResponse("404", description = "User not found")
+        ],
+        path = "/v1/activities/{activity-id}",
+        methods = [HttpMethod.PATCH]
+    )
+    fun updateActivity(ctx: Context){
+        val foundActivity : Activity = jsonToObject(ctx.body())
+        if ((ActivityController.activityDao.update(activityId = ctx.pathParam("activity-id").toInt(), activity = foundActivity )) != 0)
             ctx.status(204)
         else
             ctx.status(404)

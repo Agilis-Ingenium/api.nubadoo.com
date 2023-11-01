@@ -1,11 +1,15 @@
 package ie.setu.domain.repository
 
 import ie.setu.domain.Activity
+import ie.setu.domain.User
 import ie.setu.domain.db.Activities
 import ie.setu.domain.db.FitnessGoals
+import ie.setu.domain.db.Users
 import org.jetbrains.exposed.sql.transactions.transaction
 import ie.setu.utils.mapToActivity
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.joda.time.DateTime
 
 /**
  * Data Access Object (DAO) for managing activity-related data in the Health Tracker app.
@@ -85,6 +89,27 @@ class ActivityDAO {
         return transaction{
             Activities.deleteWhere{
                 Activities.activityId eq activityId
+            }
+        }
+    }
+
+    /**
+     * Updates an existing activity in the database.
+     *
+     * @param activityId The unique identifier of the activity to update.
+     * @param activity The updated [Activity] object.
+     * @return The number of rows affected by the update operation.
+     */
+    fun update(activityId: Int, activity: Activity) : Int {
+        return transaction {
+            Activities.update ({
+                Activities.activityId eq activityId}) {
+                it[userId] = activity.userId
+                it[activityType] = activity.activityType
+                it[durationMinutes] = activity.durationMinutes
+                it[distanceKM] = activity.distanceKm
+                it[workoutIntensity] = activity.workoutIntensity
+                //it[activityDate] = activity.activityDate
             }
         }
     }

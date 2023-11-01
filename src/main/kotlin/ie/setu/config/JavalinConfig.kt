@@ -99,6 +99,7 @@ class JavalinConfig {
                     post(ActivityController::addActivity)
                     path("{activity-id}") {
                         delete(ActivityController::deleteActivity)
+                        patch(ActivityController::updateActivity)
                     }
                 }
                 path("food-items") {
