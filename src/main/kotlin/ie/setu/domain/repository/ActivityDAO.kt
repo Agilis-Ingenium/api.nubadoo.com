@@ -110,6 +110,7 @@ class ActivityDAO {
                 it[distanceKM] = activity.distanceKm
                 it[workoutIntensity] = activity.workoutIntensity
                 it[activityDate] = activity.activityDate
+                //it[activityDate] = activity.activityDate
             }
         }
     }
