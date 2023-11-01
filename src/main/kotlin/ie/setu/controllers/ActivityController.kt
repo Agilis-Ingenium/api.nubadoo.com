@@ -123,7 +123,7 @@ object ActivityController {
         operationId = "deleteActivitiesByUserId",
         tags = ["Activity"],
         responses = [
-            OpenApiResponse("200", [OpenApiContent(Array<Activity>::class)]),
+            OpenApiResponse("204", [OpenApiContent(Array<Activity>::class)]),
             OpenApiResponse("404", [OpenApiContent(String::class)])
         ],
         path = "/v1/activities/user/{user-id}",
@@ -140,5 +140,27 @@ object ActivityController {
             else
                 ctx.status(404)
         }
+    }
+
+    /**
+     * Deletes an activity by its activity ID.
+     * @param ctx The Javalin context for handling HTTP requests.
+     */
+    @OpenApi(
+        summary = "Delete an activity by its activity ID",
+        operationId = "deleteActivity",
+        tags = ["Activity"],
+        responses = [
+            OpenApiResponse("204", description = "User deleted"),
+            OpenApiResponse("404", description = "User not found")
+        ],
+        path = "/v1/activities/{activity-id}",
+        methods = [HttpMethod.DELETE]
+    )
+    fun deleteActivity(ctx: Context){
+        if (ActivityController.activityDao.delete(ctx.pathParam("activity-id").toInt()) != 0)
+            ctx.status(204)
+        else
+            ctx.status(404)
     }
 }

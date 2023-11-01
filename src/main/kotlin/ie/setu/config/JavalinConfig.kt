@@ -97,6 +97,9 @@ class JavalinConfig {
                 path("/activities") {
                     get(ActivityController::getAllActivities)
                     post(ActivityController::addActivity)
+                    path("{activity-id}") {
+                        delete(ActivityController::deleteActivity)
+                    }
                 }
                 path("food-items") {
                     get(FoodItemController::getAllFoodItems)
