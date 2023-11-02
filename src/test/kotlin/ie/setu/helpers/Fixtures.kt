@@ -1,10 +1,6 @@
 package ie.setu.helpers
 
-import ie.setu.domain.User
-import ie.setu.domain.WorkoutPlan
-import ie.setu.domain.FoodItem
-import ie.setu.domain.Activity
-import ie.setu.domain.FitnessGoal
+import ie.setu.domain.*
 import org.joda.time.DateTime
 
 val nonExistingEmail = "112233445566778testUser@xxxxx.xx"
@@ -47,6 +43,18 @@ val activities = arrayListOf<Activity>(
 
 val fitnessgoals = arrayListOf<FitnessGoal>(
     FitnessGoal(goalId = 1, userId = 1, goalType = "weight", targetValue = 10.0, targetDate = DateTime.now()),
-    FitnessGoal(goalId = 2, userId =1, goalType = "muscle", targetValue = 5.0, targetDate = DateTime.now()),
-    FitnessGoal(goalId = 3, userId =1, goalType = "fitness", targetValue = 10.0, targetDate = DateTime.now())
+    FitnessGoal(goalId = 2, userId = 1, goalType = "muscle", targetValue = 5.0, targetDate = DateTime.now()),
+    FitnessGoal(goalId = 3, userId = 1, goalType = "fitness", targetValue = 10.0, targetDate = DateTime.now())
+)
+
+val meals = arrayListOf<MealLog>(
+    MealLog(logId = 1, userId = 1, mealTime = DateTime.now(), totalCalories = 450),
+    MealLog(logId = 2, userId = 1, mealTime = DateTime.now(), totalCalories = 480),
+    MealLog(logId = 3, userId = 1, mealTime = DateTime.now(), totalCalories = 620)
+)
+
+val metrics = arrayListOf<Metric>(
+    Metric(metricId = 1, userId = 1, weight = 180.5, height = 175.0, bmi = 24.6, systolicBloodPressure = 120, diastolicBloodPressure = 80, heartRate = 72, bloodSugar = 95.5, sleepDuration = 7, sleepQuality = "good", createdAt = DateTime.now()),
+    Metric(metricId = 2, userId = 1, weight = 134.0, height = 211.0, bmi = 25.6, systolicBloodPressure = 112, diastolicBloodPressure = 90, heartRate = 34, bloodSugar = 95.5, sleepDuration = 7, sleepQuality = "very good", createdAt = DateTime.now()),
+    Metric(metricId = 3, userId = 1, weight = 86.3, height = 145.0, bmi = 26.6, systolicBloodPressure = 80, diastolicBloodPressure = 140, heartRate = 5, bloodSugar = 95.5, sleepDuration = 7, sleepQuality = "poor", createdAt = DateTime.now()),
 )

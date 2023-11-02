@@ -11,7 +11,7 @@ import org.jetbrains.exposed.sql.*
  *
  * This class provides methods to retrieve, create, update, and delete workout plans in the database.
  *
- * @author Your Name (or the name of the author/contributor).
+ * @author Warren Byron (adapted from SETU Msc Computing Agile Dev course content).
  */
 class WorkoutPlanDAO {
 

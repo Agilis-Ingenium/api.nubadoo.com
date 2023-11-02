@@ -121,7 +121,9 @@ class JavalinConfig {
                         patch(FitnessGoalController::updateFitnessGoal)
                     }
                 }
-                /* path("/meallogfooditems") {
+                /* REMOVED FOR NOW - NOT IMPLEMENTED YET
+
+                path("/meallogfooditems") {
                     get(MealLogFoodItemController::getAllMealLogFoodItems)
                 } */
                 path("/meal-logs") {

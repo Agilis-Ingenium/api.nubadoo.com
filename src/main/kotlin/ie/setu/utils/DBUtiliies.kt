@@ -11,8 +11,8 @@ import ie.setu.domain.FitnessGoal
 import ie.setu.domain.db.FitnessGoals
 import ie.setu.domain.MealLog
 import ie.setu.domain.db.MealLogs
-import ie.setu.domain.MealLogFoodItem
-import ie.setu.domain.db.MealLogFoodItems
+//import ie.setu.domain.MealLogFoodItem
+//import ie.setu.domain.db.MealLogFoodItems
 import ie.setu.domain.Metric
 import ie.setu.domain.db.Metrics
 import ie.setu.domain.WorkoutPlan
@@ -90,7 +90,7 @@ fun mapToMealLog(it: ResultRow) = MealLog(
     mealTime = it[MealLogs.mealTime],
     totalCalories = it[MealLogs.totalCalories]
 )
-
+/* REMOVE TILL IMPLMENTATION
 /**
  * Maps a ResultRow to a MealLogFoodItem object.
  * @param it The ResultRow to be mapped.
@@ -102,6 +102,7 @@ fun mapToMealLogFoodItem(it: ResultRow) = MealLogFoodItem(
     quantity = it[MealLogFoodItems.quantity],
     calories = it[MealLogFoodItems.calories]
 )
+*/
 
 /**
  * Maps a ResultRow to a Metric object.
