@@ -2,6 +2,7 @@ package ie.setu.helpers
 
 import ie.setu.domain.*
 import org.joda.time.DateTime
+import org.joda.time.LocalDate
 
 val nonExistingEmail = "112233445566778testUser@xxxxx.xx"
 val validName = "Test User 1"
@@ -36,7 +37,7 @@ val fooditems = arrayListOf<FoodItem>(
 )
 
 val activities = arrayListOf<Activity>(
-    Activity(activityId = 1, userId = 1, activityType = "yoga", durationMinutes = 30, distanceKm = 2.0, workoutIntensity = "low", activityDate = DateTime.now()),
+    Activity(activityId = 1, userId = 1, activityType = "yoga", durationMinutes = 30, distanceKm = 2.0, workoutIntensity = "low", activityDate = DateTime.parse("2023-01-01")),
     Activity(activityId = 2, userId = 1, activityType = "running", durationMinutes = 45, distanceKm = 5.2, workoutIntensity = "moderate", activityDate = DateTime.now()),
     Activity(activityId = 3, userId = 1, activityType = "swimming", durationMinutes = 60, distanceKm = 1.5, workoutIntensity ="high", activityDate = DateTime.now())
 )
