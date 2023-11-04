@@ -45,7 +45,7 @@ class JavalinConfig {
             it.plugins.register(SwaggerPlugin(SwaggerConfiguration()))
             it.plugins.register(ReDocPlugin(ReDocConfiguration()))
             it.plugins.register(OpenApiPlugin(OpenApiConfiguration().apply {
-                info.title = "Javalin OpenAIP example"
+                info.title = "Javalin OpenAPI example"
             }))
             }
             .apply{
@@ -121,7 +121,9 @@ class JavalinConfig {
                         patch(FitnessGoalController::updateFitnessGoal)
                     }
                 }
-                /* path("/meallogfooditems") {
+                /* REMOVED FOR NOW - NOT IMPLEMENTED YET
+
+                path("/meallogfooditems") {
                     get(MealLogFoodItemController::getAllMealLogFoodItems)
                 } */
                 path("/meal-logs") {

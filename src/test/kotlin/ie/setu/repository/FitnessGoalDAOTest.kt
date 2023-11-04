@@ -2,7 +2,9 @@ package ie.setu.repository
 
 import ie.setu.domain.FitnessGoal
 import ie.setu.domain.db.FitnessGoals
+import ie.setu.domain.db.Users
 import ie.setu.domain.repository.FitnessGoalDAO
+import ie.setu.domain.repository.UserDAO
 import ie.setu.helpers.fitnessgoals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.jetbrains.exposed.sql.Database
@@ -36,7 +38,7 @@ class FitnessGoalDAOTest {
         fun `getting all fitness goals from a populated table returns all rows`() {
             transaction {
 
-                //Arrange - create and populate table with three users
+                //Arrange - create and populate table with three goals
                 val fitnessGoalDAO = populateFitnessGoalTable()
 
                 //Act & Assert
@@ -48,7 +50,7 @@ class FitnessGoalDAOTest {
         fun `get fitness goal by id that doesn't exist, results in no fitness goal returned`() {
             transaction {
 
-                //Arrange - create and populate table with three users
+                //Arrange - create and populate table with three goals
                 val fitnessGoalDAO = populateFitnessGoalTable()
 
                 //Act & Assert
@@ -59,12 +61,9 @@ class FitnessGoalDAOTest {
         @Test
         fun `get fitness goal by id that exists, results in a correct fitness goal returned`() {
             transaction {
-                //Arrange - create and populate table with three fitness goals
-                SchemaUtils.create(FitnessGoals)
-                val fitnessGoalDAO = FitnessGoalDAO()
-                fitnessGoalDAO.save(fitnessgoal1)
-                fitnessGoalDAO.save(fitnessgoal2)
-                fitnessGoalDAO.save(fitnessgoal3)
+
+                //Arrange - create and populate table with three goals
+                val fitnessGoalDAO = populateFitnessGoalTable()
 
                 //Act & Assert
                 assertEquals(null, fitnessGoalDAO.findById(4))
@@ -132,7 +131,7 @@ class FitnessGoalDAOTest {
                 val fitnessGoalDAO = populateFitnessGoalTable()
 
                 //Act & Assert
-                val fitnessGoal3Updated = FitnessGoal(goalId = 4, userId = 3, goalType = "weight", targetValue = 105.0, targetDate = DateTime("31-12-2023"))
+                val fitnessGoal3Updated = FitnessGoal(goalId = 3, userId = 3, goalType = "weight", targetValue = 105.0, targetDate = DateTime.now())
                 fitnessGoalDAO.update(fitnessgoal3.goalId, fitnessGoal3Updated)
 
                 assertEquals(fitnessGoal3Updated, fitnessGoalDAO.findById(3))
@@ -147,7 +146,7 @@ class FitnessGoalDAOTest {
                 val fitnessGoalDAO = populateFitnessGoalTable()
 
                 //Act & Assert
-                val fitnessGoal4Updated = FitnessGoal(goalId = 4, userId = 3, goalType = "weight", targetValue = 105.0, targetDate = DateTime("31-12-2023"))
+                val fitnessGoal4Updated = FitnessGoal(goalId = 4, userId = 3, goalType = "weight", targetValue = 105.0, targetDate = DateTime.now())
                 fitnessGoalDAO.update(4, fitnessGoal4Updated)
                 assertEquals(null, fitnessGoalDAO.findById(4))
                 assertEquals(3, fitnessGoalDAO.getAll().size)
@@ -192,6 +191,12 @@ class FitnessGoalDAOTest {
     //}
 
     internal fun populateFitnessGoalTable(): FitnessGoalDAO{
+        SchemaUtils.create(Users)
+        val userDAO = UserDAO()
+        userDAO.save(userdata1)
+        userDAO.save(userdata2)
+        userDAO.save(userdata3)
+        userDAO.save(userdata4)
         SchemaUtils.create(FitnessGoals)
         val fitnessGoalDAO = FitnessGoalDAO()
         fitnessGoalDAO.save(fitnessgoal1)

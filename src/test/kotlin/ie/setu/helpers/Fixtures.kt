@@ -1,11 +1,8 @@
 package ie.setu.helpers
 
-import ie.setu.domain.User
-import ie.setu.domain.WorkoutPlan
-import ie.setu.domain.FoodItem
-import ie.setu.domain.Activity
-import ie.setu.domain.FitnessGoal
+import ie.setu.domain.*
 import org.joda.time.DateTime
+import org.joda.time.LocalDate
 
 val nonExistingEmail = "112233445566778testUser@xxxxx.xx"
 val validName = "Test User 1"
@@ -40,13 +37,25 @@ val fooditems = arrayListOf<FoodItem>(
 )
 
 val activities = arrayListOf<Activity>(
-    Activity(activityId = 1, userId = 1, activityType = "yoga", durationMinutes = 30, distanceKm = 2.0, workoutIntensity = "low", activityDate = DateTime.now()),
+    Activity(activityId = 1, userId = 1, activityType = "yoga", durationMinutes = 30, distanceKm = 2.0, workoutIntensity = "low", activityDate = DateTime.parse("2023-01-01")),
     Activity(activityId = 2, userId = 1, activityType = "running", durationMinutes = 45, distanceKm = 5.2, workoutIntensity = "moderate", activityDate = DateTime.now()),
     Activity(activityId = 3, userId = 1, activityType = "swimming", durationMinutes = 60, distanceKm = 1.5, workoutIntensity ="high", activityDate = DateTime.now())
 )
 
 val fitnessgoals = arrayListOf<FitnessGoal>(
     FitnessGoal(goalId = 1, userId = 1, goalType = "weight", targetValue = 10.0, targetDate = DateTime.now()),
-    FitnessGoal(goalId = 2, userId =1, goalType = "muscle", targetValue = 5.0, targetDate = DateTime.now()),
-    FitnessGoal(goalId = 3, userId =1, goalType = "fitness", targetValue = 10.0, targetDate = DateTime.now())
+    FitnessGoal(goalId = 2, userId = 1, goalType = "muscle", targetValue = 5.0, targetDate = DateTime.now()),
+    FitnessGoal(goalId = 3, userId = 1, goalType = "fitness", targetValue = 10.0, targetDate = DateTime.now())
+)
+
+val meals = arrayListOf<MealLog>(
+    MealLog(logId = 1, userId = 1, mealTime = DateTime.now(), totalCalories = 450),
+    MealLog(logId = 2, userId = 1, mealTime = DateTime.now(), totalCalories = 480),
+    MealLog(logId = 3, userId = 1, mealTime = DateTime.now(), totalCalories = 620)
+)
+
+val metrics = arrayListOf<Metric>(
+    Metric(metricId = 1, userId = 1, weight = 180.5, height = 175.0, bmi = 24.6, systolicBloodPressure = 120, diastolicBloodPressure = 80, heartRate = 72, bloodSugar = 95.5, sleepDuration = 7, sleepQuality = "good", createdAt = DateTime.now()),
+    Metric(metricId = 2, userId = 1, weight = 134.0, height = 211.0, bmi = 25.6, systolicBloodPressure = 112, diastolicBloodPressure = 90, heartRate = 34, bloodSugar = 95.5, sleepDuration = 7, sleepQuality = "very good", createdAt = DateTime.now()),
+    Metric(metricId = 3, userId = 1, weight = 86.3, height = 145.0, bmi = 26.6, systolicBloodPressure = 80, diastolicBloodPressure = 140, heartRate = 5, bloodSugar = 95.5, sleepDuration = 7, sleepQuality = "poor", createdAt = DateTime.now()),
 )
