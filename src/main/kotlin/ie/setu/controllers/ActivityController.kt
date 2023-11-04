@@ -98,7 +98,7 @@ object ActivityController {
         requestBody = OpenApiRequestBody([OpenApiContent(Activity::class)]),
         responses = [
             OpenApiResponse("201", [OpenApiContent(Activity::class)]),
-            OpenApiResponse("400", [OpenApiContent(String::class)])
+            OpenApiResponse("404", [OpenApiContent(String::class)])
         ],
         path = "/v1/activities",
         methods = [HttpMethod.POST]
@@ -110,6 +110,10 @@ object ActivityController {
             activity.activityId = activityId
             ctx.json(activity)
             ctx.status(201)
+        }
+        else
+        {
+            ctx.status(404)
         }
     }
 
