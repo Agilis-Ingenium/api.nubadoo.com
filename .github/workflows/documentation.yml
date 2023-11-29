@@ -17,6 +17,17 @@ jobs:
       - name: Dokka with Maven
         run: mvn -B dokka:dokka
 
+      # Upload to DX site
+      - name: Upload S3    
+        uses: shallwefootball/s3-upload-action@master
+        id: S3
+        with:
+          aws_key_id: ${{secrets.AWS_KEY_ID}}
+          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_bucket: developer.nubadoo.com
+          source_dir: target/documentation/dokka
+          destination_dir: kdocs
+
       # Builds a zip file with the KDoc generated website in it 
       - name: Archive KDoc Documentation
         uses: actions/upload-artifact@v3
