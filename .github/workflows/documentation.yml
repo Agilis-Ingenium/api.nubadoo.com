@@ -22,4 +22,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: KDoc Documentation Site
-          path: target/dokka 
+          path: target/documentation/dokka
