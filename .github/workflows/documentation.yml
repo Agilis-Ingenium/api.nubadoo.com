@@ -24,7 +24,7 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           source: 'target/documentation/dokka'
-          dest: 's3://developer.nubadoo.com/kdocs'
+          dest: 's3://developer.nubadoo.com'
           flags: --recursive
 
       # Builds a zip file with the KDoc generated website in it 
