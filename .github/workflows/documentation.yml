@@ -8,18 +8,18 @@ on:
 jobs:
   documentation: 
     runs-on: ubuntu-latest
-      steps:
-      
-        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it 
-        - uses: actions/checkout@v3
-  
-        # Runs the Maven dokka task
-        - name: Dokka with Maven
-          run: mvn -B dokka:dokka
-  
-        # Builds a zip file with the KDoc generated website in it 
-        - name: Archive KDoc Documentation
-          uses: actions/upload-artifact@v3
-          with:
-            name: KDoc Documentation Site
-            path: target/dokka 
+    steps:
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it 
+      - uses: actions/checkout@v3
+
+      # Runs the Maven dokka task
+      - name: Dokka with Maven
+        run: mvn -B dokka:dokka
+
+      # Builds a zip file with the KDoc generated website in it 
+      - name: Archive KDoc Documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: KDoc Documentation Site
+          path: target/dokka 
