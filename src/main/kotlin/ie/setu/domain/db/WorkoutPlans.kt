@@ -15,4 +15,8 @@ object WorkoutPlans : Table("workout_plans") {
     val planName = varchar("plan_name",255)
     val schedule = varchar("schedule", 50).nullable()
     val planDate = datetime("plan_date").nullable()
+    val goal = varchar("goal", 20)
+    val duration = varchar("duration", 20)
+    val description = varchar("description", 150)
+    val content = text("content")
 }

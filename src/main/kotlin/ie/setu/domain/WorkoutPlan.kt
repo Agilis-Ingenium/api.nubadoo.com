@@ -20,5 +20,9 @@ data class WorkoutPlan (
     var userId: Int,
     var planName: String,
     var schedule: String?,
-    var planDate: DateTime?
+    var planDate: DateTime?,
+    var goal: String?,
+    var duration: String,
+    var description: String,
+    var content: String
 )

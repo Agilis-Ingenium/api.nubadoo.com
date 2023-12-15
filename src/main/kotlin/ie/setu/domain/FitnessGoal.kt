@@ -27,5 +27,6 @@ data class FitnessGoal (
     var userId: Int,
     var goalType: String,
     var targetValue: Double,
-    var targetDate: DateTime?
+    var targetDate: DateTime?,
+    var achieved: Boolean
 )

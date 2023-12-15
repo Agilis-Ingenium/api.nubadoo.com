@@ -76,7 +76,8 @@ fun mapToFitnessGoal(it: ResultRow) = FitnessGoal(
     userId = it[FitnessGoals.userId],
     targetValue = it[FitnessGoals.targetValue],
     targetDate = it[FitnessGoals.targetDate],
-    goalType = it[FitnessGoals.goalType]
+    goalType = it[FitnessGoals.goalType],
+    achieved = it[FitnessGoals.achieved]
 )
 
 /**
@@ -134,5 +135,9 @@ fun mapToWorkoutPlan(it: ResultRow) = WorkoutPlan(
     userId = it[WorkoutPlans.userId],
     planName = it[WorkoutPlans.planName],
     schedule = it[WorkoutPlans.schedule],
-    planDate = it[WorkoutPlans.planDate]
+    planDate = it[WorkoutPlans.planDate],
+    goal = it[WorkoutPlans.goal],
+    duration = it[WorkoutPlans.duration],
+    description = it[WorkoutPlans.description],
+    content = it[WorkoutPlans.content]
 )

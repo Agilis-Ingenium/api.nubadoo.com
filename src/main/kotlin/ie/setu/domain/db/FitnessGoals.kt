@@ -14,4 +14,5 @@ object FitnessGoals : Table("fitness_goals") {
     val goalType = varchar("goal_type",10)           // ENUM
     val targetValue = double("target_value")
     val targetDate = datetime("target_date").nullable()
+    val achieved = bool("achieved")
 }
