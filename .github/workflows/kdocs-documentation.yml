@@ -1,0 +1,35 @@
+name: Generate KDoc Site
+
+on:
+  #- push
+  #- pull_request
+  - workflow_dispatch
+
+jobs:
+  documentation: 
+    runs-on: ubuntu-latest
+    steps:
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it 
+      - uses: actions/checkout@v3
+
+      # Runs the Maven dokka task
+      - name: Dokka with Maven
+        run: mvn -B dokka:dokka
+
+      # Upload to DX site
+      - name: Upload KDocs to DX site
+        uses: prewk/s3-cp-action@v2
+        with:
+          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          source: 'target/documentation/dokka'
+          dest: 's3://developer.nubadoo.com/kdocs'
+          flags: --recursive
+
+      # Builds a zip file with the KDoc generated website in it 
+      - name: Archive KDoc Documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: KDoc Documentation Site
+          path: target/documentation/dokka
