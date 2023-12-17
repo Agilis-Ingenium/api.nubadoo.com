@@ -1,4 +1,4 @@
-name: build
+name: Coverage Report
 
 on:
   workflow_dispatch:
