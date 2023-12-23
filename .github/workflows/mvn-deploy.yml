@@ -38,7 +38,8 @@ jobs:
 
   deploy:
     name: Railway Deploy
-    needs: test
+  #  needs: test
+    needs: package
     runs-on: ubuntu-latest
 
     steps:
