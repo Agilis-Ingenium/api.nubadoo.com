@@ -38,21 +38,13 @@ jobs:
 
   deploy:
     name: Railway Deploy
-  #  needs: test
-    
     runs-on: ubuntu-latest
-
+    
+    steps:
       - name: Install Railway
         run: npm i -g @railway/cli
 
       - name: Deploy
         run: railway up --service api --detach
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: devtomio/action-railway@v1.1.4
-        name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
