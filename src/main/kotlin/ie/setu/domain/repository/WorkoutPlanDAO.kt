@@ -58,6 +58,10 @@ class WorkoutPlanDAO {
                 it[planName] = workoutPlan.planName
                 it[schedule] = workoutPlan.schedule
                 it[planDate] = workoutPlan.planDate
+                it[goal] = workoutPlan.goal
+                it[duration] = workoutPlan.duration
+                it[description] = workoutPlan.description
+                it[content] = workoutPlan.content
             } get WorkoutPlans.planId
         }
     }
@@ -77,6 +81,10 @@ class WorkoutPlanDAO {
                 it[WorkoutPlans.planName] = workoutPlan.planName
                 it[WorkoutPlans.schedule] = workoutPlan.schedule
                 it[WorkoutPlans.planDate] = workoutPlan.planDate
+                it[WorkoutPlans.goal] = workoutPlan.goal
+                it[WorkoutPlans.duration] = workoutPlan.duration
+                it[WorkoutPlans.description] = workoutPlan.description
+                it[WorkoutPlans.content] = workoutPlan.content
             }
         }
     }

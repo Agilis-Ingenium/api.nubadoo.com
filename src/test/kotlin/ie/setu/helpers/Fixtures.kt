@@ -23,9 +23,9 @@ val users = arrayListOf<User>(
 )
 
 val workoutplans = arrayListOf<WorkoutPlan>(
-    WorkoutPlan(planId = 1, userId = 1, planName = "Plan 1", schedule = "Monday, Wednesday, Friday", planDate = DateTime(2023, 10, 28, 15, 0, 0)),
-    WorkoutPlan(planId = 2, userId = 1, planName = "Plan 2", schedule = "Tuesday, Thursday", planDate = DateTime(2023, 10, 29, 15, 0, 0)),
-    WorkoutPlan(planId = 3, userId = 3, planName = "Plan 3", schedule = "Saturday", planDate = DateTime(2023, 10, 30, 15, 0, 0))
+    WorkoutPlan(planId = 1, userId = 1, planName = "Plan 1", schedule = "Monday, Wednesday, Friday", planDate = DateTime(2023, 10, 28, 15, 0, 0), content="", description="This is a description", duration="4 weeks", goal="weight loss"),
+    WorkoutPlan(planId = 2, userId = 1, planName = "Plan 2", schedule = "Tuesday, Thursday", planDate = DateTime(2023, 10, 29, 15, 0, 0), content="", description="This is a description", duration="4 weeks", goal="weight loss"),
+    WorkoutPlan(planId = 3, userId = 3, planName = "Plan 3", schedule = "Saturday", planDate = DateTime(2023, 10, 30, 15, 0, 0), content="", description="This is a description", duration="4 weeks", goal="weight loss")
 )
 
 val fooditems = arrayListOf<FoodItem>(
@@ -43,9 +43,9 @@ val activities = arrayListOf<Activity>(
 )
 
 val fitnessgoals = arrayListOf<FitnessGoal>(
-    FitnessGoal(goalId = 1, userId = 1, goalType = "weight", targetValue = 10.0, targetDate = DateTime.now()),
-    FitnessGoal(goalId = 2, userId = 1, goalType = "muscle", targetValue = 5.0, targetDate = DateTime.now()),
-    FitnessGoal(goalId = 3, userId = 1, goalType = "fitness", targetValue = 10.0, targetDate = DateTime.now())
+    FitnessGoal(goalId = 1, userId = 1, goalType = "weight", targetValue = 10.0, targetDate = DateTime.now(), achieved = false),
+    FitnessGoal(goalId = 2, userId = 1, goalType = "muscle", targetValue = 5.0, targetDate = DateTime.now(), achieved = false),
+    FitnessGoal(goalId = 3, userId = 1, goalType = "fitness", targetValue = 10.0, targetDate = DateTime.now(), achieved = false)
 )
 
 val meals = arrayListOf<MealLog>(

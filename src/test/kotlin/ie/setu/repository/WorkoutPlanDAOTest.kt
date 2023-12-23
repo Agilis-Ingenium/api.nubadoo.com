@@ -136,7 +136,7 @@ class WorkoutPlanDAOTest {
                 val workoutPlanDAO = populateWorkoutPlanTable()
 
                 //Act & Assert
-                val workoutPlan3Updated = WorkoutPlan(planId = 3, userId = 1, planName = "My New Plan", schedule = "Daily", planDate = DateTime.parse("2023-10-24"))
+                val workoutPlan3Updated = WorkoutPlan(planId = 3, userId = 1, planName = "My New Plan", schedule = "Daily", planDate = DateTime.parse("2023-10-24"), goal = "weight loss", duration = "4 weeks", content = "", description = "This is a description")
                 workoutPlanDAO.update(workoutplan3.planId, workoutPlan3Updated)
 
                 // planDate is not an update able field - so force it
@@ -158,7 +158,7 @@ class WorkoutPlanDAOTest {
                 val workoutPlanDAO = populateWorkoutPlanTable()
 
                 //Act & Assert
-                val workoutPlan4Updated = WorkoutPlan(planId = 4, userId = 1, planName = "My Very New Plan", schedule = "Alternative days", planDate = DateTime.parse("2023-10-24"))
+                val workoutPlan4Updated = WorkoutPlan(planId = 4, userId = 1, planName = "My Very New Plan", schedule = "Alternative days", planDate = DateTime.parse("2023-10-24"), goal = "weight loss", content = "", description = "This is a description", duration = "4 weeks")
                 workoutPlanDAO.update(4, workoutPlan4Updated)
                 assertEquals(null, workoutPlanDAO.findById(4))
                 assertEquals(3, workoutPlanDAO.getAll().size)

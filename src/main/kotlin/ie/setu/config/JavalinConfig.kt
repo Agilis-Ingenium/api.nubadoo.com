@@ -5,6 +5,7 @@ import ie.setu.controllers.*
 import ie.setu.utils.jsonObjectMapper
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
+import io.javalin.config.PluginConfig
 import io.javalin.json.JavalinJackson
 import io.javalin.openapi.plugin.OpenApiConfiguration
 import io.javalin.openapi.plugin.OpenApiPlugin
@@ -12,26 +13,15 @@ import io.javalin.openapi.plugin.redoc.ReDocConfiguration
 import io.javalin.openapi.plugin.redoc.ReDocPlugin
 import io.javalin.openapi.plugin.swagger.SwaggerConfiguration
 import io.javalin.openapi.plugin.swagger.SwaggerPlugin
+import io.javalin.plugin.bundled.CorsContainer
+import io.javalin.plugin.bundled.CorsPluginConfig
+import java.util.function.Consumer
 
 /**
  * Configuration class for setting up the Javalin web framework.
  * This class initializes Javalin and configures routes and settings.
  */
 class JavalinConfig {
-
-    val app = Javalin.create {
-
-        //added this jsonMapper for our integration tests - serialise objects to json
-        it.jsonMapper(JavalinJackson(jsonObjectMapper()))
-
-        //added Vue capabilities
-        it.staticFiles.enableWebjars()
-        it.vue.vueAppName = "app" // only required for Vue 3, is defined in layout.html
-
-    }.apply {
-        exception(Exception::class.java) { e, _ -> e.printStackTrace() }
-        error(404) { ctx -> ctx.json("404 : Not Found") }
-    }
 
     /**
      * Starts the Javalin web service, registers routes, and returns the Javalin instance.
@@ -47,11 +37,15 @@ class JavalinConfig {
             it.plugins.register(OpenApiPlugin(OpenApiConfiguration().apply {
                 info.title = "Javalin OpenAPI example"
             }))
+            it.plugins.enableCors(Consumer { CorsPluginConfig().anyHost() })
+
             }
+
             .apply{
                 exception(Exception::class.java) { e, ctx -> e.printStackTrace() }
                 error(404) { ctx -> ctx.json("404 - Not Found") }
             }
+
             .start(getRemoteAssignedPort())
 
         registerRoutes(app)
@@ -63,7 +57,7 @@ class JavalinConfig {
      *
      * @return The Javalin instance representing the web service.
      */
-    fun getJavalinService(): Javalin {
+    fun getJavalinService(app: Javalin): Javalin {
         registerRoutes(app)
         return app
     }

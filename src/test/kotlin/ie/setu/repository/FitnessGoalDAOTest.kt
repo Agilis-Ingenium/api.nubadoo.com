@@ -131,7 +131,13 @@ class FitnessGoalDAOTest {
                 val fitnessGoalDAO = populateFitnessGoalTable()
 
                 //Act & Assert
-                val fitnessGoal3Updated = FitnessGoal(goalId = 3, userId = 3, goalType = "weight", targetValue = 105.0, targetDate = DateTime.now())
+                val fitnessGoal3Updated = FitnessGoal(
+                    goalId = 3,
+                    userId = 3,
+                    goalType = "weight",
+                    targetValue = 105.0,
+                    targetDate = DateTime.now(),
+                    achieved = false)
                 fitnessGoalDAO.update(fitnessgoal3.goalId, fitnessGoal3Updated)
 
                 assertEquals(fitnessGoal3Updated, fitnessGoalDAO.findById(3))
@@ -146,7 +152,13 @@ class FitnessGoalDAOTest {
                 val fitnessGoalDAO = populateFitnessGoalTable()
 
                 //Act & Assert
-                val fitnessGoal4Updated = FitnessGoal(goalId = 4, userId = 3, goalType = "weight", targetValue = 105.0, targetDate = DateTime.now())
+                val fitnessGoal4Updated = FitnessGoal(
+                    goalId = 4,
+                    userId = 3,
+                    goalType = "weight",
+                    targetValue = 105.0,
+                    targetDate = DateTime.now(),
+                    achieved = true)
                 fitnessGoalDAO.update(4, fitnessGoal4Updated)
                 assertEquals(null, fitnessGoalDAO.findById(4))
                 assertEquals(3, fitnessGoalDAO.getAll().size)

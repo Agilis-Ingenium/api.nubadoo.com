@@ -58,6 +58,7 @@ class FitnessGoalDAO {
                 it[goalType] = fitnessGoal.goalType
                 it[targetValue] = fitnessGoal.targetValue
                 it[targetDate] = fitnessGoal.targetDate
+                it[achieved] = fitnessGoal.achieved
             } get FitnessGoals.goalId
         }
     }
