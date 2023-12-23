@@ -1,11 +1,10 @@
 package ie.setu.config
 
 import ie.setu.controllers.*
-
 import ie.setu.utils.jsonObjectMapper
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
-import io.javalin.config.PluginConfig
+import io.javalin.config.JavalinConfig
 import io.javalin.json.JavalinJackson
 import io.javalin.openapi.plugin.OpenApiConfiguration
 import io.javalin.openapi.plugin.OpenApiPlugin
@@ -37,9 +36,14 @@ class JavalinConfig {
             it.plugins.register(OpenApiPlugin(OpenApiConfiguration().apply {
                 info.title = "Javalin OpenAPI example"
             }))
-            it.plugins.enableCors(Consumer { CorsPluginConfig().anyHost() })
 
-            }
+
+            it.plugins.enableCors { cors: CorsContainer ->
+                    cors.add { it: CorsPluginConfig ->
+                        it.anyHost()
+                    }
+                }
+        }
 
             .apply{
                 exception(Exception::class.java) { e, ctx -> e.printStackTrace() }
