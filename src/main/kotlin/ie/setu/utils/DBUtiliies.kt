@@ -1,22 +1,17 @@
 package ie.setu.utils
 
+import ie.setu.domain.*
 import org.jetbrains.exposed.sql.ResultRow
-import ie.setu.domain.User
 import ie.setu.domain.db.Users
-import ie.setu.domain.Activity
 import ie.setu.domain.db.Activities
-import ie.setu.domain.FoodItem
 import ie.setu.domain.db.FoodItems
-import ie.setu.domain.FitnessGoal
 import ie.setu.domain.db.FitnessGoals
-import ie.setu.domain.MealLog
 import ie.setu.domain.db.MealLogs
-//import ie.setu.domain.MealLogFoodItem
-//import ie.setu.domain.db.MealLogFoodItems
-import ie.setu.domain.Metric
+import ie.setu.domain.db.MealLogFoodItems
 import ie.setu.domain.db.Metrics
-import ie.setu.domain.WorkoutPlan
 import ie.setu.domain.db.WorkoutPlans
+import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.transactions.transaction
 
 /**
  * Maps a ResultRow to a User object.
@@ -81,29 +76,54 @@ fun mapToFitnessGoal(it: ResultRow) = FitnessGoal(
 )
 
 /**
- * Maps a ResultRow to a MealLog object.
- * @param it The ResultRow to be mapped.
- * @return A MealLog object.
+ * Maps a database row [it] to a [MealLog] object.
+ *
+ * @param it The [ResultRow] representing a row from the database.
+ * @return A [MealLog] object populated with data from the database row.
  */
-fun mapToMealLog(it: ResultRow) = MealLog(
-    logId = it[MealLogs.logId],
-    userId = it[MealLogs.userId],
-    mealTime = it[MealLogs.mealTime],
-    totalCalories = it[MealLogs.totalCalories]
-)
-/* REMOVE TILL IMPLMENTATION
+fun mapToMealLog(it: ResultRow): MealLog {
+    val logId = it[MealLogs.logId]
+    val userId = it[MealLogs.userId]
+    val mealTime = it[MealLogs.mealTime]
+    val totalCalories = it[MealLogs.totalCalories]
+
+    val foodItems = retrieveFoodItemsByLogId(logId)
+    //println(foodItems)
+
+    return MealLog(logId, userId, mealTime, totalCalories, foodItems)
+}
+
 /**
- * Maps a ResultRow to a MealLogFoodItem object.
- * @param it The ResultRow to be mapped.
- * @return A MealLogFoodItem object.
+ * Retrieves a list of [FoodItem]s associated with a specific meal log [logId].
+ *
+ * @param logId The ID of the meal log for which food items are to be retrieved.
+ * @return A list of [FoodItem]s associated with the specified meal log.
  */
-fun mapToMealLogFoodItem(it: ResultRow) = MealLogFoodItem(
-    mealLogId = it[MealLogFoodItems.mealLogId],
-    foodId = it[MealLogFoodItems.foodId],
-    quantity = it[MealLogFoodItems.quantity],
-    calories = it[MealLogFoodItems.calories]
-)
-*/
+fun retrieveFoodItemsByLogId(logId: Int): List<FoodItem> {
+    return transaction {
+        (MealLogFoodItems innerJoin FoodItems)
+            .slice(FoodItems.foodItemId,
+                FoodItems.name,
+                FoodItems.calories,
+                FoodItems.carbohydrates,
+                FoodItems.proteins,
+                FoodItems.fats,
+                FoodItems.vitamins,
+                FoodItems.minerals)
+            .select { MealLogFoodItems.mealLogId eq logId }
+            .map { row -> FoodItem(
+                row[FoodItems.foodItemId],
+                row[FoodItems.name],
+                row[FoodItems.calories],
+                row[FoodItems.carbohydrates],
+                row[FoodItems.proteins],
+                row[FoodItems.fats],
+                row[FoodItems.vitamins],
+                row[FoodItems.minerals]
+            )
+        }
+    }
+}
 
 /**
  * Maps a ResultRow to a Metric object.

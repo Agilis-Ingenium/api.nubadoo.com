@@ -86,9 +86,9 @@ object FitnessGoalController {
     )
     fun addFitnessGoal(ctx: Context) {
         val fitnessGoal : FitnessGoal = jsonToObject(ctx.body())
-        val fitnessGoalId = fitnessGoalDao.save(fitnessGoal)
-        if (fitnessGoalId != null) {
-            fitnessGoal.goalId = fitnessGoalId
+        val goalId = fitnessGoalDao.save(fitnessGoal)
+        if (goalId != null) {
+            fitnessGoal.goalId = goalId
             ctx.json(fitnessGoal)
             ctx.status(201)
         }

@@ -14,9 +14,10 @@ import org.joda.time.DateTime
  *
  * @author Warren Byron (adapted from SETU Msc Computing Agile Dev course content).
  */
-data class MealLog (
-    var logId: Int,
-    var userId: Int,
-    var mealTime: DateTime,
-    var totalCalories: Int?
+data class MealLog(
+    val logId: Int?,
+    val userId: Int,
+    val mealTime: DateTime,
+    val totalCalories: Int?,
+    val foodItems: List<FoodItem>
 )

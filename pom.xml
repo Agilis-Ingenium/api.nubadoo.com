@@ -184,6 +184,26 @@
             <version>3.14.1</version>
             <classifier>standalone</classifier>
         </dependency>
+        <!-- Kotlin Exposed Core -->
+        <dependency>
+            <groupId>org.jetbrains.exposed</groupId>
+            <artifactId>exposed-core</artifactId>
+            <version>0.35.2</version>
+        </dependency>
+
+        <!-- Kotlin Exposed DAO -->
+        <dependency>
+            <groupId>org.jetbrains.exposed</groupId>
+            <artifactId>exposed-dao</artifactId>
+            <version>0.35.2</version>
+        </dependency>
+
+        <!-- Kotlin Exposed JDBC -->
+        <dependency>
+            <groupId>org.jetbrains.exposed</groupId>
+            <artifactId>exposed-jdbc</artifactId>
+            <version>0.35.2</version>
+        </dependency>
 
         <dependency>
             <groupId>org.jacoco</groupId>

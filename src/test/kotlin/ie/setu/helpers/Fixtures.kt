@@ -2,7 +2,6 @@ package ie.setu.helpers
 
 import ie.setu.domain.*
 import org.joda.time.DateTime
-import org.joda.time.LocalDate
 
 val nonExistingEmail = "112233445566778testUser@xxxxx.xx"
 val validName = "Test User 1"
@@ -49,9 +48,9 @@ val fitnessgoals = arrayListOf<FitnessGoal>(
 )
 
 val meals = arrayListOf<MealLog>(
-    MealLog(logId = 1, userId = 1, mealTime = DateTime.now(), totalCalories = 450),
-    MealLog(logId = 2, userId = 1, mealTime = DateTime.now(), totalCalories = 480),
-    MealLog(logId = 3, userId = 1, mealTime = DateTime.now(), totalCalories = 620)
+    MealLog(logId = 1, userId = 1, mealTime = DateTime.now(), totalCalories = 450, foodItems = foodItems),
+    MealLog(logId = 2, userId = 1, mealTime = DateTime.now(), totalCalories = 480, foodItems = foodItems),
+    MealLog(logId = 3, userId = 1, mealTime = DateTime.now(), totalCalories = 620, foodItems = foodItems)
 )
 
 val metrics = arrayListOf<Metric>(

@@ -53,7 +53,6 @@ class FitnessGoalDAO {
     fun save(fitnessGoal: FitnessGoal) : Int?{
         return transaction {
             FitnessGoals.insert {
-                it[goalId] = fitnessGoal.goalId
                 it[userId] = fitnessGoal.userId
                 it[goalType] = fitnessGoal.goalType
                 it[targetValue] = fitnessGoal.targetValue

@@ -12,9 +12,9 @@ package ie.setu.domain
  *
  * @author Warren Byron (adapted from SETU Msc Computing Agile Dev course content).
  */
-data class MealLogFoodItem (
-    var mealLogId: Int,
-    var foodId: Int,
-    var quantity: Double,
-    var calories: Int
+data class MealLogFoodItem(
+    val mealLogId: Int?,
+    val foodId: Int,
+    val quantity: Double,
+    val calories: Int?
 )

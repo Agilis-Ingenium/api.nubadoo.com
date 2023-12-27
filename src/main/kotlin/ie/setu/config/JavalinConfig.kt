@@ -4,7 +4,6 @@ import ie.setu.controllers.*
 import ie.setu.utils.jsonObjectMapper
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
-import io.javalin.config.JavalinConfig
 import io.javalin.json.JavalinJackson
 import io.javalin.openapi.plugin.OpenApiConfiguration
 import io.javalin.openapi.plugin.OpenApiPlugin
@@ -14,7 +13,6 @@ import io.javalin.openapi.plugin.swagger.SwaggerConfiguration
 import io.javalin.openapi.plugin.swagger.SwaggerPlugin
 import io.javalin.plugin.bundled.CorsContainer
 import io.javalin.plugin.bundled.CorsPluginConfig
-import java.util.function.Consumer
 
 /**
  * Configuration class for setting up the Javalin web framework.
@@ -83,11 +81,7 @@ class JavalinConfig {
                         get(UserController::getUserByUserId)
                         delete(UserController::deleteUser)
                         patch(UserController::updateUser)
-                        path("activities"){
-                            get(ActivityController::getActivitiesByUserId)
-                            delete(ActivityController::deleteActivitiesByUserId)
                         }
-                    }
                     path("/email/{email}") {
                         get(UserController::getUserByEmail)
                     }
@@ -99,6 +93,12 @@ class JavalinConfig {
                         delete(ActivityController::deleteActivity)
                         patch(ActivityController::updateActivity)
                         get(ActivityController::getActivityByActivityId)
+                    }
+                    path("/user"){
+                        path("{user-id}"){
+                            get(ActivityController::getActivitiesByUserId)
+                            delete(ActivityController::deleteActivitiesByUserId)
+                        }
                     }
                 }
                 path("food-items") {
@@ -119,16 +119,20 @@ class JavalinConfig {
                         patch(FitnessGoalController::updateFitnessGoal)
                     }
                 }
-                /* REMOVED FOR NOW - NOT IMPLEMENTED YET
-
-                path("/meallogfooditems") {
-                    get(MealLogFoodItemController::getAllMealLogFoodItems)
-                } */
-                path("/meal-logs") {
-                    get(MealLogController::getAllMealLogs)
-                }
                 path("/metrics") {
                     get(MetricController::getAllMetrics)
+                    post(MetricController::addMetric)
+                    path("{metric-id}") {
+                        get(MetricController::getMetricByMetricId)
+                        delete(MetricController::deleteMetric)
+                        patch(MetricController::updateMetric)
+                    }
+                    path("/user") {
+                        path("{user-id}") {
+                            get(MetricController::getMetricsByUserId)
+                            delete(MetricController::deleteMetricsByUserId)
+                        }
+                    }
                 }
                 path("/workout-plans") {
                     get(WorkoutPlanController::getAllWorkoutPlans)
@@ -139,9 +143,17 @@ class JavalinConfig {
                         patch(WorkoutPlanController::updateWorkoutPlan)
                     }
                 }
+                path("/meal-logs") {
+                    get(MealLogController::getMealLogs)
+                }
                 path("/ping") {
                     get(PongController::pong)
                 }
+                //path("/dashboard") {
+                //  path("{userId}") {
+                //        get(ChartController::getChartDatabyUserId)
+                //    }
+                //}
             }
         }
     }
