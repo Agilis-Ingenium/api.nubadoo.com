@@ -3,7 +3,8 @@ FROM maven:3.6.0-jdk-8-alpine
 
 # Download dependencies
 ADD pom.xml /
-RUN mvn verify clean
+#RUN mvn verify clean
+RUN mvn -B clean package -DskipTests
 
 # Build after dependencies are down so it wont redownload unless the POM changes
 ADD . /
