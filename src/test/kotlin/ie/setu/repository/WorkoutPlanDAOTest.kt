@@ -15,6 +15,7 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.joda.time.DateTime
+import org.junit.jupiter.api.BeforeEach
 
 //retrieving some test data from Fixtures
 val workoutplan1 = workoutplans.get(0)
@@ -170,6 +171,7 @@ class WorkoutPlanDAOTest {
         transaction {
 
             //Arrange - create and setup userDAO object
+            SchemaUtils.drop(WorkoutPlans)
             SchemaUtils.create(WorkoutPlans)
             val workoutPlanDAO = WorkoutPlanDAO()
 
