@@ -17,10 +17,6 @@ import org.junit.jupiter.api.Test
 val metric1 = metrics.get(0)
 val metric2 = metrics.get(1)
 val metric3 = metrics.get(2)
-//val userdata1 = users.get(0)
-//val userdata2 = users.get(1)
-//val userdata3 = users.get(2)
-//val userdata4 = users.get(3)
 
 class MetricDAOTest {
 

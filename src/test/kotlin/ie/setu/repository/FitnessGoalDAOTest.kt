@@ -178,30 +178,6 @@ class FitnessGoalDAOTest {
         }
     }
 
-    //@Test
-    //fun `get food item by email that doesn't exist, results in no food item returned`() {
-    //    transaction {
-
-            //Arrange - create and populate table with three food items
-    //        val foodItemDAO = populateFoodItemTable()
-
-            //Act & Assert
-    //        assertEquals(null, foodItemDAO.findById(nonExistingEmail))
-     //   }
-    //}
-
-    //@Test
-    //fun `get food item by email that exists, results in correct food item returned`() {
-    //    transaction {
-
-            //Arrange - create and populate table with three users
-    //        val foodItemDAO = populateFoodItemTable()
-
-            //Act & Assert
-    //        assertEquals(fooditem2, foodItemDAO.findByName(fooditem2.foodItemId))
-    //    }
-    //}
-
     internal fun populateFitnessGoalTable(): FitnessGoalDAO{
         SchemaUtils.create(Users)
         val userDAO = UserDAO()

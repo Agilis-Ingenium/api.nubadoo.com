@@ -14,6 +14,7 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.joda.time.DateTime
+import org.junit.jupiter.api.BeforeEach
 
 //retrieving some test data from Fixtures
 val activity1 = activities.get(0)
@@ -158,11 +159,6 @@ class ActivityDAOTest {
 
                 val toCompare = activityDAO.findById(3)
 
-                //if (toCompare != null) {
-                //    toCompare.activityDate = null
-                //}
-                //activity3Updated.activityDate = null
-
                 assertEquals(activity3Updated, toCompare)
             }
         }
@@ -192,8 +188,6 @@ class ActivityDAOTest {
     }
 
     internal fun populateActivityTable(): ActivityDAO {
-
-        // Users tables already in the temp DB ? ? ? ? Not sure - but seems so
 
         SchemaUtils.create(Users)
         val userDAO = UserDAO()

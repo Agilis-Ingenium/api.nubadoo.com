@@ -48,9 +48,9 @@ val fitnessgoals = arrayListOf<FitnessGoal>(
 )
 
 val meals = arrayListOf<MealLog>(
-    MealLog(logId = 1, userId = 1, mealTime = DateTime.now(), totalCalories = 450, foodItems = foodItems),
-    MealLog(logId = 2, userId = 1, mealTime = DateTime.now(), totalCalories = 480, foodItems = foodItems),
-    MealLog(logId = 3, userId = 1, mealTime = DateTime.now(), totalCalories = 620, foodItems = foodItems)
+    MealLog(logId = 1, userId = 1, mealTime = DateTime.now(), totalCalories = 450, foodItems = fooditems),
+    MealLog(logId = 2, userId = 1, mealTime = DateTime.now(), totalCalories = 480, foodItems = fooditems),
+    MealLog(logId = 3, userId = 1, mealTime = DateTime.now(), totalCalories = 620, foodItems = fooditems)
 )
 
 val metrics = arrayListOf<Metric>(
