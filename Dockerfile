@@ -1,5 +1,5 @@
 # Build the app using Maven
-FROM maven:3.6.0-jdk-8-alpine
+FROM maven
 
 # Download dependencies
 ADD pom.xml /
@@ -10,7 +10,7 @@ ADD . /
 RUN mvn -B clean package -DskipTests
 
 # Use the JAR file used in the first part and copy it across ready to RUN
-FROM openjdk:8-jdk-alpine
+FROM maven
 WORKDIR /root/
 
 ## COPY packaged JAR file and rename as app.jar 
