@@ -19,6 +19,14 @@ jobs:
     - name: Build with Maven
       run: mvn -B test
 
+    - name: test badge
+      uses: emibcn/badge-action@v2.0.2
+      with:
+        label: 'Test coverage'
+        status: '53.4%'
+        color: 'blue,555,daf'
+        path: '.github/badges/coverage.svg'
+
     - name: Generate JaCoCo Badge
       id: jacoco
       uses: cicirello/jacoco-badge-generator@v2
