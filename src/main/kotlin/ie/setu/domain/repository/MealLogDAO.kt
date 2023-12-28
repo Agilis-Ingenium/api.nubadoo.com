@@ -5,6 +5,7 @@ import ie.setu.domain.db.MealLogs
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import ie.setu.utils.mapToMealLog
+import org.jetbrains.exposed.sql.insert
 
 /**
  * Data Access Object (DAO) for managing meal log-related data in the Health Tracker app.
@@ -29,5 +30,20 @@ class MealLogDAO {
                 mealLogList.add(mapToMealLog(it)) }
         }
         return mealLogList
+    }
+
+    /**
+     * Saves a record to the meals logs table.
+     *
+     * NOTE: This is just a minimal implementation for testing.  Do not use.
+     */
+    fun save(mealLog: MealLog) : Int? {
+        return transaction {
+            MealLogs.insert {
+                it[userId] = mealLog.userId
+                it[mealTime] = mealLog.mealTime
+                it[totalCalories] = mealLog.totalCalories
+            } get MealLogs.logId
+        }
     }
 }
