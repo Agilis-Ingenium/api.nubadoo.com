@@ -66,6 +66,18 @@ class FoodItemDAOTest {
         }
 
         @Test
+        fun `get food item by name that exists, results in a correct food item returned`() {
+            transaction {
+
+                val foodItemDAO = populateFoodItemTable()
+
+                println(fooditem3.name)
+
+                assertEquals(fooditem3, foodItemDAO.findByName("Eggs"))
+            }
+        }
+
+        @Test
         fun `get all food items over empty table returns none`() {
             transaction {
 

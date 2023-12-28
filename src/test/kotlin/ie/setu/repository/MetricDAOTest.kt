@@ -69,6 +69,20 @@ class MetricDAOTest {
         }
 
         @Test
+        fun `get metric by user id that exists, results in a correct metric returned`() {
+            transaction {
+
+                val metricDAO = populateMetricTable()
+
+                println(metric1.userId)
+                println(metric2.userId)
+                println(metric3.userId)
+
+                assertEquals(3, metricDAO.findByUserId(1).size)
+            }
+        }
+
+        @Test
         fun `get all metrics over empty table returns none`() {
             transaction {
 
