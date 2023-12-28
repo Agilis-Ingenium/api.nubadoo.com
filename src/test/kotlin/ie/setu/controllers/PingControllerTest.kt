@@ -22,7 +22,5 @@ class PingControllerTest {
         println("Success : " + response.isSuccess)
         println("Status code : " + response.status)
         println("Body : " + response.body)
-
     }
-
 }
