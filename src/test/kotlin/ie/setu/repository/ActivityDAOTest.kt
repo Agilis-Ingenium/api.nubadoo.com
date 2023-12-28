@@ -80,6 +80,34 @@ class ActivityDAOTest {
                 assertEquals(0, activityDAO.getAll().size)
             }
         }
+
+        @Test
+        fun `get activities by user id that exists`() {
+            transaction {
+                SchemaUtils.create(Activities)
+                val activityDAO = populateActivityTable()
+
+                println(activity1.userId)
+                println(activity2.userId)
+                println(activity3.userId)
+
+                assertEquals(3, activityDAO.findByUserId(1).size)
+            }
+        }
+
+        @Test
+        fun `get activities by user id that does not exist`() {
+            transaction {
+                SchemaUtils.create(Activities)
+                val activityDAO = populateActivityTable()
+
+                println(activity1.userId)
+                println(activity2.userId)
+                println(activity3.userId)
+
+                assertEquals(0, activityDAO.findByUserId(16).size)
+            }
+        }
     }
 
     @Nested
