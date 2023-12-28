@@ -1,9 +1,10 @@
 package ie.setu.repository
 
+import ie.setu.domain.Metric
 import ie.setu.domain.db.Metrics
 import ie.setu.domain.db.Users
-import ie.setu.domain.repository.UserDAO
 import ie.setu.domain.repository.MetricDAO
+import ie.setu.domain.repository.UserDAO
 import ie.setu.helpers.metrics
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.jetbrains.exposed.sql.Database
@@ -12,8 +13,8 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.joda.time.DateTime
 
-//retrieving some test data from Fixtures
 val metric1 = metrics.get(0)
 val metric2 = metrics.get(1)
 val metric3 = metrics.get(2)
@@ -22,7 +23,6 @@ class MetricDAOTest {
 
     companion object {
 
-        //Make a connection to a local, in memory H2 database.
         @BeforeAll
         @JvmStatic
         internal fun setupInMemoryDatabaseConnection() {
@@ -36,188 +36,183 @@ class MetricDAOTest {
         fun `getting all metrics from a populated table returns all rows`() {
             transaction {
 
-                //Arrange - create and populate table with three metrics
                 val metricDAO = populateMetricTable()
 
-                //Act & Assert
+                println(metricDAO.getAll())
+
                 assertEquals(3, metricDAO.getAll().size)
             }
         }
 
-        /* DISABLING FOR INTERIM SUBMISSION - NOT YET IMPLEMENTED
-
-            @Test
-            fun `get meal log by id that doesn't exist, results in no meal log returned`() {
-                transaction {
-
-                    //Arrange - create and populate table with three users
-                    val userDAO = populateMealLogTable()
-
-                    //Act & Assert
-                    assertEquals(null, userDAO.findById(4))
-                }
-            }
-
-            @Test
-            fun `get meal log by id that exists, results in a correct meal log returned`() {
-                transaction {
-                    //Arrange - create and populate table with three users
-                    SchemaUtils.create(Users)
-                    val userDAO = UserDAO()
-                    userDAO.save(user1)
-                    userDAO.save(user2)
-                    userDAO.save(user3)
-
-                    //Act & Assert
-                    assertEquals(null, userDAO.findById(4))
-                }
-
-            }
-        }
-
-
-        @Nested
-        inner class CreateUsers {
-            @Test
-            fun `multiple users added to table can be retrieved successfully`() {
-                transaction {
-
-                    //Arrange - create and populate table with three users
-                    val userDAO = populateUserTable()
-
-                    //Act & Assert
-                    assertEquals(3, userDAO.getAll().size)
-                    assertEquals(user1, userDAO.findById(user1.userId))
-                    assertEquals(user2, userDAO.findById(user2.userId))
-                    assertEquals(user3, userDAO.findById(user3.userId))
-                }
-            }
-        }
-
-        @Nested
-        inner class DeleteUsers {
-            @Test
-            fun `deleting a non-existant user in table results in no deletion`() {
-                transaction {
-
-                    //Arrange - create and populate table with three users
-                    val userDAO = populateUserTable()
-
-                    //Act & Assert
-                    assertEquals(3, userDAO.getAll().size)
-                    userDAO.delete(4)
-                    assertEquals(3, userDAO.getAll().size)
-                }
-            }
-
-            @Test
-            fun `deleting an existing user in table results in record being deleted`() {
-                transaction {
-
-                    //Arrange - create and populate table with three users
-                    val userDAO = populateUserTable()
-
-                    //Act & Assert
-                    assertEquals(3, userDAO.getAll().size)
-                    userDAO.delete(user3.userId)
-                    assertEquals(2, userDAO.getAll().size)
-                }
-            }
-        }
-
-        @Nested
-        inner class UpdateUsers {
-
-            @Test
-            fun `updating existing user in table results in successful update`() {
-                transaction {
-
-                    //Arrange - create and populate table with three users
-                    val userDAO = populateUserTable()
-
-                    //Act & Assert
-                    val user3Updated = User(3, "new username", "new@email.ie", password = "password123", dateOfBirth = DateTime.parse("2023-10-24"), firstName = "John", lastName = "Doe", gender = "male", registrationDate = DateTime.parse("2023-10-24"))
-                    userDAO.update(user3.userId, user3Updated)
-
-                    // reegistrationDate is not an update able field - so force it
-                    val toCompare = userDAO.findById(3)
-                    if (toCompare != null) {
-                        toCompare.registrationDate = null
-                    }
-                    user3Updated.registrationDate = null
-
-
-                    assertEquals(user3Updated, toCompare)
-                }
-            }
-
-            @Test
-            fun `updating non-existant user in table results in no updates`() {
-                transaction {
-
-                    //Arrange - create and populate table with three users
-                    val userDAO = populateUserTable()
-
-                    //Act & Assert
-                    val user4Updated = User(3, "new username", "new@email.ie", password = "password123", dateOfBirth = DateTime.parse("2023-10-24"), firstName = "John", lastName = "Doe", gender = "male", registrationDate = DateTime.parse("2023-10-24"))
-                    userDAO.update(4, user4Updated)
-                    assertEquals(null, userDAO.findById(4))
-                    assertEquals(3, userDAO.getAll().size)
-                }
-            }
-        }
         @Test
-        fun `get all users over empty table returns none`() {
+        fun `get metric by id that doesn't exist, results in no metric returned`() {
             transaction {
 
-                //Arrange - create and setup userDAO object
-                SchemaUtils.create(Users)
-                val userDAO = UserDAO()
+                val metricDAO = populateMetricTable()
 
-                //Act & Assert
-                assertEquals(0, userDAO.getAll().size)
+                println(metricDAO.findById(4))
+
+                assertEquals(null, metricDAO.findById(4))
             }
         }
 
         @Test
-        fun `get user by email that doesn't exist, results in no user returned`() {
+        fun `get metric plan by id that exists, results in a correct metric returned`() {
             transaction {
 
-                //Arrange - create and populate table with three users
-                val userDAO = populateUserTable()
+                val metricDAO = populateMetricTable()
 
-                //Act & Assert
-                assertEquals(null, userDAO.findByEmail(nonExistingEmail))
+                println(metric3)
+
+                assertEquals(metric3, metricDAO.findById(3))
             }
         }
 
         @Test
-        fun `get user by email that exists, results in correct user returned`() {
+        fun `get all metrics over empty table returns none`() {
             transaction {
 
-                //Arrange - create and populate table with three users
-                val userDAO = populateUserTable()
+                SchemaUtils.create(Metrics)
+                val metricDAO = MetricDAO()
 
-                //Act & Assert
-                assertEquals(user2, userDAO.findByEmail(user2.email))
+                println(metricDAO.getAll())
+
+                assertEquals(0, metricDAO.getAll().size)
+            }
+        }
+    }
+
+    @Nested
+    inner class CreateMetric {
+        @Test
+        fun `multiple metrics added to table can be retrieved successfully`() {
+            transaction {
+
+                val metricDAO = populateMetricTable()
+
+                println(metricDAO.getAll())
+
+                assertEquals(3, metricDAO.getAll().size)
+                assertEquals(metric1, metricDAO.findById(metric1.metricId))
+                assertEquals(metric2, metricDAO.findById(metric2.metricId))
+                assertEquals(metric3, metricDAO.findById(metric3.metricId))
+            }
+        }
+    }
+
+
+    @Nested
+    inner class DeleteMetrics {
+        @Test
+        fun `deleting a non-existant metric in table results in no deletion`() {
+            transaction {
+
+                val metricDAO = populateMetricTable()
+
+                println(metricDAO.getAll())
+
+                assertEquals(3, metricDAO.getAll().size)
+                metricDAO.delete(4)
+                assertEquals(3, metricDAO.getAll().size)
             }
         }
 
-         */
+        @Test
+        fun `deleting an existing metric in table results in record being deleted`() {
+            transaction {
 
-        internal fun populateMetricTable(): MetricDAO {
-            SchemaUtils.create(Users)
-            val userDAO = UserDAO()
-            userDAO.save(userdata1)
-            userDAO.save(userdata2)
-            userDAO.save(userdata3)
-            userDAO.save(userdata4)
-            SchemaUtils.create(Metrics)
-            val metricDAO = MetricDAO()
-            metricDAO.save(metric1)
-            metricDAO.save(metric2)
-            metricDAO.save(metric3)
-            return metricDAO
+                val metricDAO = populateMetricTable()
+
+                println(metricDAO.getAll())
+
+                assertEquals(3, metricDAO.getAll().size)
+                metricDAO.delete(metric3.metricId)
+                assertEquals(2, metricDAO.getAll().size)
+            }
         }
+    }
+
+    @Nested
+    inner class UpdateMetrics {
+
+        @Test
+        fun `updating existing metrics in table results in successful update`() {
+            transaction {
+
+                val metricDAO = populateMetricTable()
+
+                val metric3Updated = Metric(
+                    metricId = 3,
+                    userId = 1,
+                    weight = 180.0,
+                    height = 183.0,
+                    bmi = 12.0,
+                    systolicBloodPressure = 160,
+                    diastolicBloodPressure = 170,
+                    heartRate = 62,
+                    bloodSugar = 12.0,
+                    sleepDuration = 8,
+                    sleepQuality = "good",
+                    createdAt = DateTime.parse("2023-10-24")
+                )
+
+                metricDAO.update(metric3Updated.metricId, metric3Updated)
+
+                val toCompare = metricDAO.findById(3)
+
+                println(toCompare)
+                println("---")
+                println(metric3Updated)
+
+                assertEquals(metric3Updated, toCompare)
+            }
+        }
+
+        @Test
+        fun `updating non-existant metric in table results in no updates`() {
+            transaction {
+
+                val metricDAO = populateMetricTable()
+
+                val metric4Updated = Metric(
+                    metricId = 4,
+                    userId = 1,
+                    weight = 180.0,
+                    height = 183.0,
+                    bmi = 12.0,
+                    systolicBloodPressure = 160,
+                    diastolicBloodPressure = 170,
+                    heartRate = 62,
+                    bloodSugar = 12.0,
+                    sleepDuration = 8,
+                    sleepQuality = "good",
+                    createdAt = DateTime.parse("2023-10-24"))
+
+                println(metricDAO.findById(4))
+                println("---")
+                println(metricDAO.getAll().size)
+
+                metricDAO.update(4, metric4Updated)
+                assertEquals(null, metricDAO.findById(4))
+                assertEquals(3, metricDAO.getAll().size)
+            }
+        }
+    }
+
+    internal fun populateMetricTable(): MetricDAO {
+
+        SchemaUtils.create(Users)
+        val userDAO = UserDAO()
+        userDAO.save(userdata1)
+        userDAO.save(userdata2)
+        userDAO.save(userdata3)
+        userDAO.save(userdata4)
+
+        SchemaUtils.create(Metrics)
+        val metricDAO = MetricDAO()
+        metricDAO.save(metric1)
+        metricDAO.save(metric2)
+        metricDAO.save(metric3)
+        return metricDAO
     }
 }

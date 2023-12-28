@@ -163,7 +163,7 @@ class ActivityDAOTest {
         }
 
         @Test
-        fun `updating non-existant aactivity in table results in no updates`() {
+        fun `updating non-existant activity in table results in no updates`() {
             transaction {
 
                 val activityDAO = populateActivityTable()

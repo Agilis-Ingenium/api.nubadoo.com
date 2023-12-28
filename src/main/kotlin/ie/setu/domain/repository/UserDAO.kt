@@ -2,10 +2,10 @@ package ie.setu.domain.repository
 
 import ie.setu.domain.User
 import ie.setu.domain.db.Users
-
 import org.jetbrains.exposed.sql.transactions.transaction
-import ie.setu.utils.mapToUser
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import ie.setu.utils.mapToUser
 
 /**
  * Data Access Object (DAO) for managing user-related data in the Health Tracker app.
@@ -113,7 +113,7 @@ class UserDAO {
                 it[lastName] = user.lastName
                 it[dateOfBirth] = user.dateOfBirth
                 it[gender] = user.gender
-                //it[registrationDate] = user.registrationDate
+                it[registrationDate] = user.registrationDate
             }
         }
     }

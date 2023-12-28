@@ -90,9 +90,9 @@ class FoodItemDAOTest {
                 println(foodItemDAO.getAll())
 
                 assertEquals(3, foodItemDAO.getAll().size)
-                assertEquals(fooditem1, foodItemDAO.findById(fitnessgoal1.goalId))
-                assertEquals(fooditem2, foodItemDAO.findById(fitnessgoal2.goalId))
-                assertEquals(fooditem3, foodItemDAO.findById(fitnessgoal3.goalId))
+                assertEquals(fooditem1, foodItemDAO.findById(fooditem1.foodItemId))
+                assertEquals(fooditem2, foodItemDAO.findById(fooditem2.foodItemId))
+                assertEquals(fooditem3, foodItemDAO.findById(fooditem3.foodItemId))
             }
         }
     }
