@@ -41,6 +41,9 @@ class FitnessGoalDAOTest {
                 //Arrange - create and populate table with three goals
                 val fitnessGoalDAO = populateFitnessGoalTable()
 
+                // See actual
+                println(fitnessGoalDAO.getAll())
+
                 //Act & Assert
                 assertEquals(3, fitnessGoalDAO.getAll().size)
             }
@@ -52,6 +55,9 @@ class FitnessGoalDAOTest {
 
                 //Arrange - create and populate table with three goals
                 val fitnessGoalDAO = populateFitnessGoalTable()
+
+                // See actual
+                println(fitnessGoalDAO.findById(4))
 
                 //Act & Assert
                 assertEquals(null, fitnessGoalDAO.findById(4))
@@ -65,10 +71,28 @@ class FitnessGoalDAOTest {
                 //Arrange - create and populate table with three goals
                 val fitnessGoalDAO = populateFitnessGoalTable()
 
+                // See actual
+                println(fitnessgoal3)
+
                 //Act & Assert
                 assertEquals(null, fitnessGoalDAO.findById(4))
             }
+        }
 
+        @Test
+        fun `get all fitness goals over empty table returns none`() {
+            transaction {
+
+                //Arrange - create and setup foodItemDAO object
+                SchemaUtils.create(FitnessGoals)
+                val fitnessGoalDAO = FitnessGoalDAO()
+
+                // See actual
+                println(fitnessGoalDAO.getAll())
+
+                //Act & Assert
+                assertEquals(0, fitnessGoalDAO.getAll().size)
+            }
         }
     }
 
@@ -80,6 +104,9 @@ class FitnessGoalDAOTest {
 
                 //Arrange - create and populate table with three users
                 val fitnessGoalDAO = populateFitnessGoalTable()
+
+                // See actual
+                println(fitnessGoalDAO.getAll())
 
                 //Act & Assert
                 assertEquals(3, fitnessGoalDAO.getAll().size)
@@ -98,6 +125,9 @@ class FitnessGoalDAOTest {
                 //Arrange - create and populate table with three users
                 val fitnessGoalDAO = populateFitnessGoalTable()
 
+                // See actual
+                println(fitnessGoalDAO.getAll())
+
                 //Act & Assert
                 assertEquals(3, fitnessGoalDAO.getAll().size)
                 fitnessGoalDAO.delete(4)
@@ -112,9 +142,12 @@ class FitnessGoalDAOTest {
                 //Arrange - create and populate table with three users
                 val fitnessGoalDAO = populateFitnessGoalTable()
 
+                // See actual
+                println(fitnessGoalDAO.getAll())
+
                 //Act & Assert
                 assertEquals(3, fitnessGoalDAO.getAll().size)
-                fitnessGoalDAO.delete(fitnessgoal3.goalId)
+                fitnessGoalDAO.delete(3)
                 assertEquals(2, fitnessGoalDAO.getAll().size)
             }
         }
@@ -138,9 +171,16 @@ class FitnessGoalDAOTest {
                     targetValue = 105.0,
                     targetDate = DateTime.now(),
                     achieved = false)
-                fitnessGoalDAO.update(fitnessgoal3.goalId, fitnessGoal3Updated)
+                fitnessGoalDAO.update(fitnessGoal3Updated.goalId, fitnessGoal3Updated)
 
-                assertEquals(fitnessGoal3Updated, fitnessGoalDAO.findById(3))
+                val toCompare = fitnessGoalDAO.findById(3)
+
+                // See actual
+                println(toCompare)
+                println("---")
+                println(fitnessGoal3Updated)
+
+                assertEquals(fitnessGoal3Updated, toCompare)
             }
         }
 
@@ -159,22 +199,16 @@ class FitnessGoalDAOTest {
                     targetValue = 105.0,
                     targetDate = DateTime.now(),
                     achieved = true)
+
+                // See actual
+                println(fitnessGoalDAO.findById(4))
+                println("---")
+                println(fitnessGoalDAO.getAll().size)
+
                 fitnessGoalDAO.update(4, fitnessGoal4Updated)
                 assertEquals(null, fitnessGoalDAO.findById(4))
                 assertEquals(3, fitnessGoalDAO.getAll().size)
             }
-        }
-    }
-    @Test
-    fun `get all fitness goals over empty table returns none`() {
-        transaction {
-
-            //Arrange - create and setup foodItemDAO object
-            SchemaUtils.create(FitnessGoals)
-            val fitnessGoalDAO = FitnessGoalDAO()
-
-            //Act & Assert
-            assertEquals(0, fitnessGoalDAO.getAll().size)
         }
     }
 

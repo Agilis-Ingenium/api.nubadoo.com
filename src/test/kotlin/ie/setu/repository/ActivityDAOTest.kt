@@ -42,6 +42,9 @@ class ActivityDAOTest {
                 //Arrange - create and populate table with three workoutplans
                 val activityDAO = populateActivityTable()
 
+                // See actual
+                println(activityDAO.getAll())
+
                 //Act & Assert
                 assertEquals(3, activityDAO.getAll().size)
             }
@@ -54,6 +57,9 @@ class ActivityDAOTest {
                 //Arrange - create and populate table with three activities
                 val activityDAO = populateActivityTable()
 
+                // See actual
+                println(activityDAO.findById(4))
+
                 //Act & Assert
                 assertEquals(null, activityDAO.findById(4))
             }
@@ -65,10 +71,12 @@ class ActivityDAOTest {
                 //Arrange - create and populate table with three workout plans
                 val activityDAO = populateActivityTable()
 
-                //Act & Assert
-                assertEquals(null, activityDAO.findById(4))
-            }
+                // See actual
+                println(activity3)
 
+                //Act & Assert
+                assertEquals(activity3, activityDAO.findById(3))
+            }
         }
 
         @Test
@@ -78,6 +86,9 @@ class ActivityDAOTest {
                 //Arrange - create and setup userDAO object
                 SchemaUtils.create(Activities)
                 val activityDAO = ActivityDAO()
+
+                // See actual
+                println(activityDAO.getAll())
 
                 //Act & Assert
                 assertEquals(0, activityDAO.getAll().size)
@@ -93,6 +104,9 @@ class ActivityDAOTest {
 
                 //Arrange - create and populate table with three users
                 val activityDAO = populateActivityTable()
+
+                // See actual
+                println(activityDAO.getAll())
 
                 //Act & Assert
                 assertEquals(3, activityDAO.getAll().size)
@@ -113,6 +127,9 @@ class ActivityDAOTest {
                 //Arrange - create and populate table with three users
                 val activityDAO = populateActivityTable()
 
+                // See actual
+                println(activityDAO.getAll())
+
                 //Act & Assert
                 assertEquals(3, activityDAO.getAll().size)
                 activityDAO.delete(4)
@@ -127,9 +144,12 @@ class ActivityDAOTest {
                 //Arrange - create and populate table with three activites
                 val activityDAO = populateActivityTable()
 
+                // See actual
+                println(activityDAO.getAll())
+
                 //Act & Assert
                 assertEquals(3, activityDAO.getAll().size)
-                activityDAO.delete(user3.userId)
+                activityDAO.delete(user3.userId)  // 3
                 assertEquals(2, activityDAO.getAll().size)
             }
         }
@@ -159,6 +179,11 @@ class ActivityDAOTest {
 
                 val toCompare = activityDAO.findById(3)
 
+                // See actual
+                println(toCompare)
+                println("---")
+                println(activity3Updated)
+
                 assertEquals(activity3Updated, toCompare)
             }
         }
@@ -180,6 +205,12 @@ class ActivityDAOTest {
                     workoutIntensity = "high",
                     activityDate = DateTime.now()
                 )
+
+                // See actual
+                println(activityDAO.findById(4))
+                println("---")
+                println(activityDAO.getAll().size)
+
                 activityDAO.update(4, activity4Updated)
                 assertEquals(null, activityDAO.findById(4))
                 assertEquals(3, activityDAO.getAll().size)
@@ -189,13 +220,14 @@ class ActivityDAOTest {
 
     internal fun populateActivityTable(): ActivityDAO {
 
+        // Need user table because there is referential link
+        // Need users 1 and 3 only
         SchemaUtils.create(Users)
         val userDAO = UserDAO()
         userDAO.save(userdata1)
-        userDAO.save(userdata2)
         userDAO.save(userdata3)
-        userDAO.save(userdata4)
 
+        // This recreates the table
         SchemaUtils.create(Activities)
         val activityDAO = ActivityDAO()
         activityDAO.save(activity1)
