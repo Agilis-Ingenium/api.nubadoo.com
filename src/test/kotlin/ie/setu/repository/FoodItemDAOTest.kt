@@ -12,7 +12,6 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
-//retrieving some test data from Fixtures
 val fooditem1 = fooditems.get(0)
 val fooditem2 = fooditems.get(1)
 val fooditem3 = fooditems.get(2)
@@ -21,7 +20,6 @@ class FoodItemDAOTest {
 
     companion object {
 
-        //Make a connection to a local, in memory H2 database.
         @BeforeAll
         @JvmStatic
         internal fun setupInMemoryDatabaseConnection() {
@@ -35,10 +33,10 @@ class FoodItemDAOTest {
         fun `getting all food items from a populated table returns all rows`() {
             transaction {
 
-                //Arrange - create and populate table with three users
                 val foodItemDAO = populateFoodItemTable()
 
-                //Act & Assert
+                println(foodItemDAO.getAll())
+
                 assertEquals(3, foodItemDAO.getAll().size)
             }
         }
@@ -47,10 +45,10 @@ class FoodItemDAOTest {
         fun `get food item by id that doesn't exist, results in no food item returned`() {
             transaction {
 
-                //Arrange - create and populate table with three users
                 val foodItemDAO = populateFoodItemTable()
 
-                //Act & Assert
+                println(foodItemDAO.findById(4))
+
                 assertEquals(null, foodItemDAO.findById(4))
             }
         }
@@ -58,17 +56,26 @@ class FoodItemDAOTest {
         @Test
         fun `get food item by id that exists, results in a correct food item returned`() {
             transaction {
-                //Arrange - create and populate table with three food items
+
+                val foodItemDAO = populateFoodItemTable()
+
+                println(fooditem3)
+
+                assertEquals(fooditem3, foodItemDAO.findById(3))
+            }
+        }
+
+        @Test
+        fun `get all food items over empty table returns none`() {
+            transaction {
+
                 SchemaUtils.create(FoodItems)
                 val foodItemDAO = FoodItemDAO()
-                foodItemDAO.save(fooditem1)
-                foodItemDAO.save(fooditem2)
-                foodItemDAO.save(fooditem3)
 
-                //Act & Assert
-                assertEquals(null, foodItemDAO.findById(4))
+                println(foodItemDAO.getAll())
+
+                assertEquals(0, foodItemDAO.getAll().size)
             }
-
         }
     }
 
@@ -78,14 +85,14 @@ class FoodItemDAOTest {
         fun `multiple food items added to table can be retrieved successfully`() {
             transaction {
 
-                //Arrange - create and populate table with three users
                 val foodItemDAO = populateFoodItemTable()
 
-                //Act & Assert
+                println(foodItemDAO.getAll())
+
                 assertEquals(3, foodItemDAO.getAll().size)
-                assertEquals(fooditem1, foodItemDAO.findById(fooditem1.foodItemId))
-                assertEquals(fooditem2, foodItemDAO.findById(fooditem2.foodItemId))
-                assertEquals(fooditem3, foodItemDAO.findById(fooditem3.foodItemId))
+                assertEquals(fooditem1, foodItemDAO.findById(fitnessgoal1.goalId))
+                assertEquals(fooditem2, foodItemDAO.findById(fitnessgoal2.goalId))
+                assertEquals(fooditem3, foodItemDAO.findById(fitnessgoal3.goalId))
             }
         }
     }
@@ -96,10 +103,10 @@ class FoodItemDAOTest {
         fun `deleting a non-existant food item in table results in no deletion`() {
             transaction {
 
-                //Arrange - create and populate table with three users
                 val foodItemDAO = populateFoodItemTable()
 
-                //Act & Assert
+                println(foodItemDAO.getAll())
+
                 assertEquals(3, foodItemDAO.getAll().size)
                 foodItemDAO.delete(4)
                 assertEquals(3, foodItemDAO.getAll().size)
@@ -110,10 +117,10 @@ class FoodItemDAOTest {
         fun `deleting an existing food item in table results in record being deleted`() {
             transaction {
 
-                //Arrange - create and populate table with three users
                 val foodItemDAO = populateFoodItemTable()
 
-                //Act & Assert
+                println(foodItemDAO.getAll())
+
                 assertEquals(3, foodItemDAO.getAll().size)
                 foodItemDAO.delete(fooditem3.foodItemId)
                 assertEquals(2, foodItemDAO.getAll().size)
@@ -128,14 +135,26 @@ class FoodItemDAOTest {
         fun `updating existing food item in table results in successful update`() {
             transaction {
 
-                //Arrange - create and populate table with three users
                 val foodItemDAO = populateFoodItemTable()
 
-                //Act & Assert
-                val foodItem3Updated = FoodItem(3, "Pumpkin", 105, 27.0, 1.3, 0.4, "Vitamin C, Vitamin B6", "Potassium, Manganese")
+                val foodItem3Updated = FoodItem(
+                    3,
+                    "Pumpkin",
+                    105,
+                    27.0,
+                    1.3,
+                    0.4,
+                    "Vitamin C, Vitamin B6",
+                    "Potassium, Manganese")
                 foodItemDAO.update(fooditem3.foodItemId, foodItem3Updated)
 
-                assertEquals(foodItem3Updated, foodItemDAO.findById(3))
+                val toCompare = foodItemDAO.findById(3)
+
+                println(toCompare)
+                println("---")
+                println(foodItem3Updated)
+
+                assertEquals(foodItem3Updated, toCompare)
             }
         }
 
@@ -143,27 +162,26 @@ class FoodItemDAOTest {
         fun `updating non-existant food item in table results in no updates`() {
             transaction {
 
-                //Arrange - create and populate table with three users
                 val foodItemDAO = populateFoodItemTable()
 
-                //Act & Assert
-                val foodItem4Updated = FoodItem(10, "Pumpkin", 105, 27.0, 1.3, 0.4, "Vitamin C, Vitamin B6", "Potassium, Manganese")
+                val foodItem4Updated = FoodItem(10,
+                    "Pumpkin",
+                    105,
+                    27.0,
+                    1.3,
+                    0.4,
+                    "Vitamin C, Vitamin B6",
+                    "Potassium, Manganese")
+
+                println(foodItemDAO.findById(4))
+                println("---")
+                println(foodItemDAO.getAll().size)
+
                 foodItemDAO.update(4, foodItem4Updated)
+
                 assertEquals(null, foodItemDAO.findById(4))
                 assertEquals(3, foodItemDAO.getAll().size)
             }
-        }
-    }
-    @Test
-    fun `get all food items over empty table returns none`() {
-        transaction {
-
-            //Arrange - create and setup foodItemDAO object
-            SchemaUtils.create(FoodItems)
-            val foodItemDAO = FoodItemDAO()
-
-            //Act & Assert
-            assertEquals(0, foodItemDAO.getAll().size)
         }
     }
 

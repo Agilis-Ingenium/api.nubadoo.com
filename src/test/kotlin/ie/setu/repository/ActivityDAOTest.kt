@@ -14,9 +14,7 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.joda.time.DateTime
-import org.junit.jupiter.api.BeforeEach
 
-//retrieving some test data from Fixtures
 val activity1 = activities.get(0)
 val activity2 = activities.get(1)
 val activity3 = activities.get(2)
@@ -25,7 +23,6 @@ class ActivityDAOTest {
 
     companion object {
 
-        //Make a connection to a local, in memory H2 database.
         @BeforeAll
         @JvmStatic
         internal fun setupInMemoryDatabaseConnection() {
@@ -39,13 +36,10 @@ class ActivityDAOTest {
         fun `getting all activities from a populated table returns all rows`() {
             transaction {
 
-                //Arrange - create and populate table with three workoutplans
                 val activityDAO = populateActivityTable()
 
-                // See actual
                 println(activityDAO.getAll())
 
-                //Act & Assert
                 assertEquals(3, activityDAO.getAll().size)
             }
         }
@@ -54,13 +48,10 @@ class ActivityDAOTest {
         fun `get activity by id that doesn't exist, results in no activity returned`() {
             transaction {
 
-                //Arrange - create and populate table with three activities
                 val activityDAO = populateActivityTable()
 
-                // See actual
                 println(activityDAO.findById(4))
 
-                //Act & Assert
                 assertEquals(null, activityDAO.findById(4))
             }
         }
@@ -68,13 +59,11 @@ class ActivityDAOTest {
         @Test
         fun `get activity plan by id that exists, results in a correct activity returned`() {
             transaction {
-                //Arrange - create and populate table with three workout plans
+
                 val activityDAO = populateActivityTable()
 
-                // See actual
                 println(activity3)
 
-                //Act & Assert
                 assertEquals(activity3, activityDAO.findById(3))
             }
         }
@@ -83,14 +72,11 @@ class ActivityDAOTest {
         fun `get all activities over empty table returns none`() {
             transaction {
 
-                //Arrange - create and setup userDAO object
                 SchemaUtils.create(Activities)
                 val activityDAO = ActivityDAO()
 
-                // See actual
                 println(activityDAO.getAll())
 
-                //Act & Assert
                 assertEquals(0, activityDAO.getAll().size)
             }
         }
@@ -102,13 +88,10 @@ class ActivityDAOTest {
         fun `multiple activities added to table can be retrieved successfully`() {
             transaction {
 
-                //Arrange - create and populate table with three users
                 val activityDAO = populateActivityTable()
 
-                // See actual
                 println(activityDAO.getAll())
 
-                //Act & Assert
                 assertEquals(3, activityDAO.getAll().size)
                 assertEquals(activity1, activityDAO.findById(activity1.activityId))
                 assertEquals(activity2, activityDAO.findById(activity2.activityId))
@@ -124,13 +107,10 @@ class ActivityDAOTest {
         fun `deleting a non-existant activity in table results in no deletion`() {
             transaction {
 
-                //Arrange - create and populate table with three users
                 val activityDAO = populateActivityTable()
 
-                // See actual
                 println(activityDAO.getAll())
 
-                //Act & Assert
                 assertEquals(3, activityDAO.getAll().size)
                 activityDAO.delete(4)
                 assertEquals(3, activityDAO.getAll().size)
@@ -141,15 +121,12 @@ class ActivityDAOTest {
         fun `deleting an existing activity in table results in record being deleted`() {
             transaction {
 
-                //Arrange - create and populate table with three activites
                 val activityDAO = populateActivityTable()
 
-                // See actual
                 println(activityDAO.getAll())
 
-                //Act & Assert
                 assertEquals(3, activityDAO.getAll().size)
-                activityDAO.delete(user3.userId)  // 3
+                activityDAO.delete(user3.userId)
                 assertEquals(2, activityDAO.getAll().size)
             }
         }
@@ -162,10 +139,8 @@ class ActivityDAOTest {
         fun `updating existing activities in table results in successful update`() {
             transaction {
 
-                //Arrange - create and populate table with three activities
                 val activityDAO = populateActivityTable()
 
-                //Act & Assert
                 val activity3Updated = Activity(
                     activityId = 3,
                     userId = 1,
@@ -179,7 +154,6 @@ class ActivityDAOTest {
 
                 val toCompare = activityDAO.findById(3)
 
-                // See actual
                 println(toCompare)
                 println("---")
                 println(activity3Updated)
@@ -192,10 +166,8 @@ class ActivityDAOTest {
         fun `updating non-existant aactivity in table results in no updates`() {
             transaction {
 
-                //Arrange - create and populate table with three activities
                 val activityDAO = populateActivityTable()
 
-                //Act & Assert
                 val activity4Updated = Activity(
                     activityId = 4,
                     userId = 1,
@@ -206,7 +178,6 @@ class ActivityDAOTest {
                     activityDate = DateTime.now()
                 )
 
-                // See actual
                 println(activityDAO.findById(4))
                 println("---")
                 println(activityDAO.getAll().size)
@@ -220,14 +191,13 @@ class ActivityDAOTest {
 
     internal fun populateActivityTable(): ActivityDAO {
 
-        // Need user table because there is referential link
-        // Need users 1 and 3 only
         SchemaUtils.create(Users)
         val userDAO = UserDAO()
         userDAO.save(userdata1)
+        userDAO.save(userdata2)
         userDAO.save(userdata3)
+        userDAO.save(userdata4)
 
-        // This recreates the table
         SchemaUtils.create(Activities)
         val activityDAO = ActivityDAO()
         activityDAO.save(activity1)
