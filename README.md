@@ -8,6 +8,8 @@
 
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.0-orange.svg?style=flat-square)](https://kotlinlang.org/)
 
+[![LIVE](https://img.shields.io/badge/LIVE_IN_PRODUCTION-v1.0-blue)](https://app.nubadoo.com)
+
 ## Introduction
 
 Welcome to the NuBaDoo Health Tracker API, the backend powerhouse of the NuBaDoo platform! This repository hosts the Kotlin source code for our cutting-edge health tracker application. 
