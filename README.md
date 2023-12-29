@@ -1,7 +1,7 @@
 # Welcome to the NuBaDoo Health Tracker API
 
 [![Build Status](https://img.shields.io/github/workflow/status/Agilis-Ingenium/api.nubadoo.com/Build%20and%20Deploy?style=flat-square)](https://github.com/Agilis-Ingenium/api.nubadoo.com/actions)
-[![Coverage](https://img.shields.io/coveralls/github/Agilis-Ingenium/api.nubadoo.com?style=flat-square)](https://coveralls.io/github/Agilis-Ingenium/api.nubadoo.com)
+[![Coverage](https://img.shields.io/coveralls/github/Agilis-Ingenium/api.nubadoo.com?style=flat-square)]([https://coveralls.io/github/Agilis-Ingenium/api.nubadoo.com](https://developer.nubadoo.com/coverage/index.html))
 [![NuBaDoo Docs](https://img.shields.io/badge/docs-NuBaDoo%20API-blue?style=flat-square)](http://developer.nubadoo.com)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.0-orange.svg?style=flat-square)](https://kotlinlang.org/)
 
@@ -27,14 +27,6 @@ NuBaDoo.com is a domain reserved for a business idea with a promising future!
 
 - **Swagger 3.0:** Our OpenAPI definitions are Swagger-compliant and easy to work with. Check our developer portal for details.
 
-## Get Started
+## Project Repos
 
-Whether you're an experienced developer or a newbie to Kotlin, our codebase welcomes you! If you're interested in contributing, follow these steps:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Agilis-Ingenium/api.nubadoo.com.git
-   
-
-Just a wee test - to see if railway integration runs
-MMM, test again
+Take a look at all the repos, there's a lot going on: https://github.com/Agilis-Ingenium
