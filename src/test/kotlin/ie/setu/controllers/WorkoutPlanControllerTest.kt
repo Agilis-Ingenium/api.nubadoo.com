@@ -9,6 +9,8 @@ class WorkoutPlanControllerTest {
 
     private val db = DbConfig().getDbConnection()
     private val app = ServerContainer.instance
-    private val origin = "http://localhost:" + app.port()
+    private val origin = "http://localhost:" + app.port() + "/v1"
+
+    //IMPLEMENT
 
 }

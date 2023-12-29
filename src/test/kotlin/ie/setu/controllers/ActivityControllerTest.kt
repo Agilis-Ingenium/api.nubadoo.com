@@ -21,12 +21,6 @@ class ActivityControllerTest {
     private val app = ServerContainer.instance
     private val origin = "http://localhost:" + app.port()
 
-    @Test
-    fun `get all users from the database returns 200 or 404 response`() {
-        val response = Unirest.get(origin + "/v1/users/").asString()
-        assertEquals(200, response.status)
-    }
-
     @Nested
     inner class CreateActivities {
 
@@ -69,25 +63,14 @@ class ActivityControllerTest {
             assertNotEquals(201, addActivityResponse.status)
         }
     }
-/*
+
     @Nested
     inner class ReadActivities {
-           get(   "/api/users/:user-id/activities", HealthTrackerController::getActivitiesByUserId)
-           get(   "/api/activities", HealthTrackerController::getAllActivities)
-           get(   "/api/activities/:activity-id", HealthTrackerController::getActivitiesByActivityId)
-    }
-
- */
-
-    @Nested
-    inner class UpdateActivities {
-        //  patch( "/api/activities/:activity-id", HealthTrackerController::updateActivity)
-    }
-
-    @Nested
-    inner class DeleteActivities {
-        //   delete("/api/activities/:activity-id", HealthTrackerController::deleteActivityByActivityId)
-        //   delete("/api/users/:user-id/activities", HealthTrackerController::deleteActivityByUserId)
+        @Test
+        fun `get all users from the database returns 200 or 404 response`() {
+            val response = Unirest.get(origin + "/v1/users/").asString()
+            assertEquals(200, response.status)
+        }
     }
 }
 
