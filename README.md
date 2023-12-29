@@ -1,6 +1,6 @@
 # Welcome to the NuBaDoo Health Tracker API
 
-[![NuBaDoo DX Portal](https://img.shields.io/badge/docs-NuBaDoo%20API-blue?style=flat-square)](http://developer.nubadoo.com)[![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.0-orange.svg?style=flat-square)](https://kotlinlang.org/)[![LIVE](https://img.shields.io/badge/LIVE_IN_PRODUCTION-v1.0-blue)](https://app.nubadoo.com)
+[![NuBaDoo DX Portal](https://img.shields.io/badge/docs-NuBaDoo%20API-blue?style=flat-square)](http://developer.nubadoo.com) [![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.0-orange.svg?style=flat-square)](https://kotlinlang.org/) [![LIVE](https://img.shields.io/badge/LIVE_IN_PRODUCTION-v1.0-blue)](https://app.nubadoo.com)
 
 ## Introduction
 
