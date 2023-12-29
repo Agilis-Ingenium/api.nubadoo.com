@@ -1,14 +1,6 @@
 # Welcome to the NuBaDoo Health Tracker API
 
-[![Build Status](https://img.shields.io/github/workflow/status/Agilis-Ingenium/api.nubadoo.com/Build%20and%20Deploy?style=flat-square)](https://github.com/Agilis-Ingenium/api.nubadoo.com/actions)
-
-[![Coverage](https://img.shields.io/coveralls/github/Agilis-Ingenium/api.nubadoo.com?style=flat-square)]([https://coveralls.io/github/Agilis-Ingenium/api.nubadoo.com](https://developer.nubadoo.com/coverage/index.html))
-
-[![NuBaDoo DX Portal](https://img.shields.io/badge/docs-NuBaDoo%20API-blue?style=flat-square)](http://developer.nubadoo.com)
-
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.0-orange.svg?style=flat-square)](https://kotlinlang.org/)
-
-[![LIVE](https://img.shields.io/badge/LIVE_IN_PRODUCTION-v1.0-blue)](https://app.nubadoo.com)
+[![NuBaDoo DX Portal](https://img.shields.io/badge/docs-NuBaDoo%20API-blue?style=flat-square)](http://developer.nubadoo.com)[![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.0-orange.svg?style=flat-square)](https://kotlinlang.org/)[![LIVE](https://img.shields.io/badge/LIVE_IN_PRODUCTION-v1.0-blue)](https://app.nubadoo.com)
 
 ## Introduction
 
