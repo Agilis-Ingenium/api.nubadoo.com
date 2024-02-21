@@ -25,7 +25,7 @@ class DbConfig{
         val PGHOST = "flora.db.elephantsql.com"
         val PGPORT = "5432"
         val PGUSER = "ofnpknxi"
-        val PGPASSWORD = "mIyip-QntL4PJWk_LINrtBfEklbMkSYt"
+        val PGPASSWORD = "IGakuJ2D6KxDuLqIoLdtUNJfm85i3yJ_"
         val PGDATABASE = "ofnpknxi"
 
         //url format should be jdbc:postgresql://host:port/database
